@@ -21,6 +21,5 @@ namespace SerranaLogCargas.Models
             Name = name;
             State = state;
         }
-
     }
 }

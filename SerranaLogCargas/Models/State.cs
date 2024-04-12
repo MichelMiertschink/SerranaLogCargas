@@ -13,7 +13,7 @@ namespace SerranaLogCargas.Models
         [Display(Name = "Estado")]
         [Required]
         public string Name { get; set; }
-        public ICollection<City> City { get; set; }
+        public ICollection<City> Cities { get; set; } = new List<City>();
 
         public State()
         {
@@ -28,12 +28,12 @@ namespace SerranaLogCargas.Models
 
         public void AddCity (City city)
         {
-            City.Add(city);
+            Cities.Add(city);
         }
 
         public void RemoveCity (City city)
         {
-            City.Remove(city);
+            Cities.Remove(city);
         }
     }
 }

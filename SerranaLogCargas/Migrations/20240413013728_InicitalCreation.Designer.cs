@@ -10,8 +10,8 @@ using SerranaLogCargas.Data;
 namespace SerranaLogCargas.Migrations
 {
     [DbContext(typeof(SerranaLogCargasContext))]
-    [Migration("20240413004147_InitialCreation")]
-    partial class InitialCreation
+    [Migration("20240413013728_InicitalCreation")]
+    partial class InicitalCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,11 +46,11 @@ namespace SerranaLogCargas.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Acronym")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Sigla")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 

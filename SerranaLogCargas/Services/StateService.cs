@@ -16,5 +16,11 @@ namespace SerranaLogCargas.Services
         {
             return _context.States.ToList();
         }
+
+        public void Insert(State obj)
+        {
+            _context.Add(obj);
+            _context.SaveChanges();
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace SerranaLogCargas.Models
         public int Id { get; set; }
         [Display(Name = "Sigla")]
         [Required]
-        public string Sigla { get; set; }
+        public string Acronym { get; set; }
         [Display(Name = "Estado")]
         [Required]
         public string Name { get; set; }
@@ -22,7 +22,7 @@ namespace SerranaLogCargas.Models
         public State (int id, string sigla, string name)
         {
             Id = id;
-            Sigla = sigla;
+            Acronym = sigla;
             Name = name;
         } 
 

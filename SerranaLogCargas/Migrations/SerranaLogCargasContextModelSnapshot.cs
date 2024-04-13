@@ -44,11 +44,11 @@ namespace SerranaLogCargas.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Acronym")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Sigla")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 

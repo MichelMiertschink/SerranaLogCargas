@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SerranaLogCargas.Data;
+using SerranaLogCargas.Services;
 
 namespace SerranaLogCargas
 {
@@ -17,11 +18,16 @@ namespace SerranaLogCargas
                     "server=localhost; initial catalog=SERRANALOGCARGAS; uid=root; pwd=root",
                     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.25-mysql")));
 
+            // Registrando injeção de dependencia para os serviços
+            builder.Services.AddScoped<StateService>();
+
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<SerranaLogCargasContext>();
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+            
 
             var app = builder.Build();
 

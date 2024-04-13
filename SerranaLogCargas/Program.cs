@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SerranaLogCargas.Data;
-using SerranaLogCargas.Services;
 
 namespace SerranaLogCargas
 {
@@ -19,7 +18,6 @@ namespace SerranaLogCargas
                     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.25-mysql")));
 
             // Registrando injeção de dependencia para os serviços
-            builder.Services.AddScoped<StateService>();
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

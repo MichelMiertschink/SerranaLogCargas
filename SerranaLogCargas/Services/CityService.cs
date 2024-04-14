@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SerranaLogCargas.Data;
 using SerranaLogCargas.Models;
-
+using SerranaLogCargas.Services.Exceptions;
 
 namespace SerranaLogCargas.Services
 {
@@ -37,6 +37,23 @@ namespace SerranaLogCargas.Services
             await _context.SaveChangesAsync();
         }
         
+        public async Task UpdateAsync(City obj)
+        {
+            if (!_context.City.Any(x => x.Id == obj.Id))
+            {
+                throw new NotFoundException("Id não encontrada");
+            }
+
+            try
+            {
+                _context.Update(obj);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
+            }
+        }
     
     }
 }

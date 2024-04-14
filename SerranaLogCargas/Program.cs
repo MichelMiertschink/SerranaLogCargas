@@ -21,6 +21,7 @@ namespace SerranaLogCargas
             // Registrando injeção de dependencia para os serviços
             builder.Services.AddScoped<SeedingService>();
             builder.Services.AddScoped<CityService>();
+            builder.Services.AddScoped<StateService>();
 
             
             // Seeding service

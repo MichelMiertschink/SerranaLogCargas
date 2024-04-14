@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Plugins;
 using SerranaLogCargas.Data;
 using SerranaLogCargas.Models;
 
@@ -21,6 +22,19 @@ namespace SerranaLogCargas.Services
         public async Task InsertAsync(City obj)
         {
             _context.Add(obj);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<City> FindByIdAsync(int id)
+        {
+            return await _context.City.Include(obj => obj.State).FirstOrDefaultAsync(obj => obj.Id == id);
+        }
+
+
+        public async Task Remove(int id)
+        {
+            var obj = _context.City.Find(id);
+            _context.City.Remove(obj);
             await _context.SaveChangesAsync();
         }
         

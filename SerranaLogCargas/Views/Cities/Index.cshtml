@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<SerranaLogCargas.Models.City>
+
 @{
     ViewData["Title"] = "Title";
 }
@@ -13,6 +14,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
             <th>Operações</th>
         </tr>
     </thead>
@@ -22,6 +26,9 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="badge bg-primary">Editar</a>

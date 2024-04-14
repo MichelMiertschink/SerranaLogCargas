@@ -1,11 +1,11 @@
 ﻿@model SerranaLogCargas.Models.ViewModels.CityFormViewModel
 
 @{
-    ViewData["Title"] = "Cidades";
+    ViewData["Title"] = "Cidade";
 }
 
 <h1>Editar</h1>
-
+<h4>Cidade</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -23,12 +23,9 @@
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-secondary" /> |
+                <a asp-action="Index" class="btn">Retornar</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Retornar</a>
 </div>

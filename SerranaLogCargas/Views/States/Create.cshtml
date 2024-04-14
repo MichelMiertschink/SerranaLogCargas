@@ -1,10 +1,10 @@
 ﻿@model SerranaLogCargas.Models.State
 
 @{
-    ViewData["Title"] = "Title";
+    ViewData["Title"] = "Estado";
 }
 
-<h1>Nova UF</h1>
+<h1>Estado</h1>
 
 <hr />
 <div class="row">
@@ -23,13 +23,10 @@
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-primary" /> |
+                <a asp-action="Index" class="btn">Retornar</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index" class="btn">Retornar</a>
 </div>
 

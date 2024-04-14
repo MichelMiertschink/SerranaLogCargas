@@ -12,6 +12,7 @@ namespace SerranaLogCargas.Models
         [Required (ErrorMessage = "Informe a unidade federativa")]
         [Display(Name = "Estado")]
         public State State { get; set; }
+        [Display(Name = "Estado")]
         public int StateId { get; set; }
 
         // Colocar campo para o código IBGE

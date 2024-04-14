@@ -1,13 +1,12 @@
 ﻿@model SerranaLogCargas.Models.State
 
 @{
-    ViewData["Title"] = "Title";
+    ViewData["Title"] = "Estado";
 }
 
 <h1>Detalhes</h1>
-
+<h4>Estado</h4>
 <div>
-    <h4>State</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -25,6 +24,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Editar</a> |
-    <a asp-action="Index">Retornar</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-secondary">Editar</a> |
+    <a asp-action="Index" class="btn">Retornar</a>
 </div>

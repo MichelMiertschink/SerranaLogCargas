@@ -1,10 +1,10 @@
 ﻿@model SerranaLogCargas.Models.ViewModels.CityFormViewModel
 
 @{
-    ViewData["Title"] = "Nova Cidade";
+    ViewData["Title"] = "Cidade";
 }
 
-<h1>Nova Cidade</h1>
+<h1>Cidade</h1>
 
 <hr />
 <div class="row">
@@ -19,15 +19,13 @@
             <div class="form-group">
                 <label asp-for="City.StateId" class="control-label"></label>
                 <select asp-for="City.StateId" asp-items="@(new SelectList(Model.States, "Id", "Name"))" class="form-control"></select>
+                <span asp-validation-for="City.StateId" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-primary" /> |
+                <a asp-action="Index" class="btn">Retornar</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Retornar</a>
 </div>

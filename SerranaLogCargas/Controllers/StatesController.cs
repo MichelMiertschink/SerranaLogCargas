@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SerranaLogCargas.Data;
 using SerranaLogCargas.Models;
+using SerranaLogCargas.Models.ViewModels;
 
 namespace SerranaLogCargas.Controllers
 {
@@ -32,14 +34,14 @@ namespace SerranaLogCargas.Controllers
         {
             if (id == null || _context.States == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não fornecida" });
             }
 
             var state = await _context.States
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (state == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não encontrada" });
             }
 
             return View(state);
@@ -72,13 +74,13 @@ namespace SerranaLogCargas.Controllers
         {
             if (id == null || _context.States == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não fornecida" });
             }
 
             var state = await _context.States.FindAsync(id);
             if (state == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não encontrada" });
             }
             return View(state);
         }
@@ -92,7 +94,7 @@ namespace SerranaLogCargas.Controllers
         {
             if (id != state.Id)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não fornecida" });
             }
 
             if (ModelState.IsValid)
@@ -106,7 +108,7 @@ namespace SerranaLogCargas.Controllers
                 {
                     if (!StateExists(state.Id))
                     {
-                        return NotFound();
+                        return RedirectToAction(nameof(Error), new { message = "ID não encontrada" });
                     }
                     else
                     {
@@ -123,14 +125,14 @@ namespace SerranaLogCargas.Controllers
         {
             if (id == null || _context.States == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não fornecida" });
             }
 
             var state = await _context.States
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (state == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não encontrada" });
             }
 
             return View(state);
@@ -143,7 +145,7 @@ namespace SerranaLogCargas.Controllers
         {
             if (_context.States == null)
             {
-                return Problem("Entity set 'SerranaLogCargasContext.States'  is null.");
+                return Problem("Entity set 'SerranaLogCargasContext.States' is null.");
             }
             var state = await _context.States.FindAsync(id);
             if (state != null)
@@ -158,6 +160,16 @@ namespace SerranaLogCargas.Controllers
         private bool StateExists(int id)
         {
           return (_context.States?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        public IActionResult Error(string message)
+        {
+            var viewModel = new ErrorViewModel
+            {
+                Message = message,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+            return View(viewModel);
         }
     }
 }

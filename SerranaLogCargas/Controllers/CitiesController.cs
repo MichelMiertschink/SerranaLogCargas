@@ -2,6 +2,7 @@
 using SerranaLogCargas.Models;
 using SerranaLogCargas.Models.ViewModels;
 using SerranaLogCargas.Services;
+using System.Diagnostics;
 
 namespace SerranaLogCargas.Controllers
 {
@@ -45,14 +46,13 @@ namespace SerranaLogCargas.Controllers
         {
             if (id == null)
             {
-                return NotFound();
-                //RedirectToAction(nameof(Error), new { message = "ID não encontrada" })
+                return RedirectToAction(nameof(Error), new { message = "ID não fornecido" });
             }
 
             var obj = await _cityService.FindByIdAsync(id.Value);
             if (obj == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não encontrado" });
             }
             
             return View(obj);
@@ -69,8 +69,7 @@ namespace SerranaLogCargas.Controllers
             } 
             catch (Exception e) 
             {
-                return NotFound();
-                    // RedirectToAction(nameof(), new { message = e.Message });
+                return RedirectToAction(nameof(Error), new { message = e.Message });
             }
         }
 
@@ -78,14 +77,13 @@ namespace SerranaLogCargas.Controllers
         {
             if (id == null)
             {
-                return NotFound();
-                //RedirectToAction(nameof(Error), new { message = "ID não encontrada" })
+                return RedirectToAction(nameof(Error), new { message = "ID não fornecido" });
             }
 
             var obj = await _cityService.FindByIdAsync(id.Value);
             if (obj == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não encontrado" });
             }
 
             return View(obj);
@@ -95,14 +93,13 @@ namespace SerranaLogCargas.Controllers
         {
             if (id == null)
             {
-                return NotFound();
-                //RedirectToAction(nameof(Error), new { message = "ID não encontrada" })
+                return RedirectToAction(nameof(Error), new { message = "ID não fornecido" });
             }
 
             var obj = await _cityService.FindByIdAsync(id.Value);
             if (obj == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não encontrada" });
             }
             List<State> states = await _stateService.FindAllAsync();
             CityFormViewModel viewModel = new CityFormViewModel { City = obj, States = states};
@@ -121,8 +118,7 @@ namespace SerranaLogCargas.Controllers
             }
             if (id != city.Id)
             {
-                return NotFound();
-                //RedirectToAction(nameof(Error), new { message = "ID não encontrada" })
+                return RedirectToAction(nameof(Error), new { message = "IDs não correspondem" });
             }
             try
             {
@@ -131,20 +127,19 @@ namespace SerranaLogCargas.Controllers
             } 
             catch (ApplicationException ex) 
             {
-                return NotFound();
-                //RedirectToAction(nameof(Error), new { message = e.Message })
+                return RedirectToAction(nameof(Error), new { message = ex.Message });
 
             }
         }
 
-        //public IActionResult Error (string message)
-        //{
-        //    var viewModel = new ErrorViewModel
-        //    {
-        //        Message = message,
-        //        RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
-        //    };
-        //    return View(viewModel);
-        //}
+        public IActionResult Error(string message)
+        {
+            var viewModel = new ErrorViewModel
+            {
+                Message = message,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+            return View(viewModel);
+        }
     }
 }

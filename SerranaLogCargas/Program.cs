@@ -18,6 +18,14 @@ namespace SerranaLogCargas
                     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.25-mysql")));
 
             // Registrando injeção de dependencia para os serviços
+            builder.Services.AddScoped<SeedingService>();
+
+            
+            // Seeding service
+            var conectionString = builder.Configuration.GetConnectionString("AppDb");
+            builder.Services.AddTransient<SeedingService>();
+
+
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -25,10 +33,8 @@ namespace SerranaLogCargas
                 .AddEntityFrameworkStores<SerranaLogCargasContext>();
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
-            
-
             var app = builder.Build();
-
+            
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {

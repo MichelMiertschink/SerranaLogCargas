@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NuGet.Protocol.Plugins;
 using SerranaLogCargas.Data;
 using SerranaLogCargas.Models;
 

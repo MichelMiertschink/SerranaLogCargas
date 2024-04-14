@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SerranaLogCargas.Data;
+using SerranaLogCargas.Services;
 
 namespace SerranaLogCargas
 {
@@ -19,6 +20,7 @@ namespace SerranaLogCargas
 
             // Registrando injeção de dependencia para os serviços
             builder.Services.AddScoped<SeedingService>();
+            builder.Services.AddScoped<CityService>();
 
             
             // Seeding service

@@ -17,5 +17,10 @@ namespace SerranaLogCargas.Services
             return await _context.Customers.ToListAsync();
             
         }
+        public async Task InsertAsync (Customer obj)
+        {
+            _context.Add(obj);
+            await _context.SaveChangesAsync();
+        }
     }
 }

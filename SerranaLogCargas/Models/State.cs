@@ -25,15 +25,5 @@ namespace SerranaLogCargas.Models
             Acronym = sigla;
             Name = name;
         } 
-
-        public void AddCity (City city)
-        {
-            Cities.Add(city);
-        }
-
-        public void RemoveCity (City city)
-        {
-            Cities.Remove(city);
-        }
     }
 }

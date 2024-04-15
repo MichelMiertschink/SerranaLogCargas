@@ -35,7 +35,30 @@ namespace SerranaLogCargas.Migrations
 
                     b.HasIndex("StateId");
 
-                    b.ToTable("City");
+                    b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("SerranaLogCargas.Models.Customer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("CNPJ")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("CorporateReason")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("CostCenter")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("SerranaLogCargas.Models.State", b =>

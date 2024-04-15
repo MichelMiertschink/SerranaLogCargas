@@ -10,8 +10,8 @@ using SerranaLogCargas.Data;
 namespace SerranaLogCargas.Migrations
 {
     [DbContext(typeof(SerranaLogCargasContext))]
-    [Migration("20240413231332_InitialCreation")]
-    partial class InitialCreation
+    [Migration("20240414234632_CustomerInitial")]
+    partial class CustomerInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,7 +20,7 @@ namespace SerranaLogCargas.Migrations
                 .HasAnnotation("ProductVersion", "6.0.29")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("SerranaLogCargas.Models.Cities", b =>
+            modelBuilder.Entity("SerranaLogCargas.Models.City", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -38,6 +38,29 @@ namespace SerranaLogCargas.Migrations
                     b.HasIndex("StateId");
 
                     b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("SerranaLogCargas.Models.Customer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("CNPJ")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("CorporateReason")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("CostCenter")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("SerranaLogCargas.Models.State", b =>
@@ -59,7 +82,7 @@ namespace SerranaLogCargas.Migrations
                     b.ToTable("States");
                 });
 
-            modelBuilder.Entity("SerranaLogCargas.Models.Cities", b =>
+            modelBuilder.Entity("SerranaLogCargas.Models.City", b =>
                 {
                     b.HasOne("SerranaLogCargas.Models.State", "State")
                         .WithMany("Cities")

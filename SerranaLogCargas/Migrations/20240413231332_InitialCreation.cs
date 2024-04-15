@@ -30,7 +30,7 @@ namespace SerranaLogCargas.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "City",
+                name: "Cities",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -53,14 +53,14 @@ namespace SerranaLogCargas.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_City_StateId",
-                table: "City",
+                table: "Cities",
                 column: "StateId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "City");
+                name: "Cities");
 
             migrationBuilder.DropTable(
                 name: "States");

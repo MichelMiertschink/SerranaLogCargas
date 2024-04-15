@@ -22,8 +22,9 @@ namespace SerranaLogCargas
             builder.Services.AddScoped<SeedingService>();
             builder.Services.AddScoped<CityService>();
             builder.Services.AddScoped<StateService>();
+            builder.Services.AddScoped<CustomerService>();
 
-            
+
             // Seeding service
             var conectionString = builder.Configuration.GetConnectionString("AppDb");
             builder.Services.AddTransient<SeedingService>();
@@ -37,8 +38,10 @@ namespace SerranaLogCargas
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
             var app = builder.Build();
-            
+
             // Configure the HTTP request pipeline.
+            //SeedingService seedingService = new SeedingService(context);
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseMigrationsEndPoint();

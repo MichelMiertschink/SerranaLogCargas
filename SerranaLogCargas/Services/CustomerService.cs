@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SerranaLogCargas.Data;
 using SerranaLogCargas.Models;
-using System.Diagnostics.Contracts;
 
 namespace SerranaLogCargas.Services
 {
@@ -17,7 +16,7 @@ namespace SerranaLogCargas.Services
             return await _context.Customers.ToListAsync();
             
         }
-        public async Task InsertAsync (Customer obj)
+        public async Task InsertAsync(Customer obj)
         {
             _context.Add(obj);
             await _context.SaveChangesAsync();

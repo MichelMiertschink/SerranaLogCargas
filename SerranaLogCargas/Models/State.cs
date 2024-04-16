@@ -8,7 +8,7 @@ namespace SerranaLogCargas.Models
         [Key]
         public int Id { get; set; }
         [Display(Name = "Sigla")]
-        [Required]
+        [StringLength(2, ErrorMessage = "Tamanho informado incorreto")]
         public string Acronym { get; set; }
         [Display(Name = "Estado")]
         [Required]

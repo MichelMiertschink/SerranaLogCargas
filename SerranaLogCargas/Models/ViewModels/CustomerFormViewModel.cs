@@ -2,6 +2,6 @@
 {
     public class CustomerFormViewModel
     {
-        public Customer customer { get; set; }
+        public Customer Customers { get; set; }
     }
 }

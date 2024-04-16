@@ -6,24 +6,24 @@ namespace SerranaLogCargas.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
-        [Display(Name = "Razão Social")]
-        public string CorporateReason { get; set; }
-        [Required]
         [Display(Name = "CNPJ")]
         [StringLength(14, ErrorMessage = "Tamanho informado incorreto")]
         public string CNPJ { get; set; }
-        [Required]
+        [Display(Name = "Razão Social")]
+        public string CorporateReason { get; set; }
+
         [Display(Name ="CCusto")]
         public string CostCenter { get; set; }
 
-        public Customer() { }
+        public Customer() 
+        {
+        }
 
-        public Customer(int id, string corporateReason, string cNPJ, string costCenter)
+        public Customer(int id, string corporateReason, string cnpj, string costCenter)
         {
             Id = id;
             CorporateReason = corporateReason;
-            CNPJ = cNPJ;
+            CNPJ = cnpj;
             CostCenter = costCenter;
         }
     }

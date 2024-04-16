@@ -11,6 +11,6 @@ namespace SerranaLogCargas.Data
         }
         public DbSet<State> States { get; set; } = default!;
         public DbSet<City> Cities {  get; set; } = default!;
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Customer> Customers { get; set; } = default!;
     }
 }

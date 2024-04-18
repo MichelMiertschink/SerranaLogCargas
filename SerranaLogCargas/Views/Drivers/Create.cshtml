@@ -1,7 +1,7 @@
-﻿@model SerranaLogCargas.Models.State
+﻿@model SerranaLogCargas.Models.Driver
 
 @{
-    ViewData["Title"] = "Estado";
+    ViewData["Title"] = "Motorista";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -12,14 +12,14 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Acronym" class="control-label"></label>
-                <input asp-for="Acronym" class="form-control" />
-                <span asp-validation-for="Acronym" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CelPhone" class="control-label"></label>
+                <input asp-for="CelPhone" class="form-control" placeholder="(00) 00000-0000"/>
+                <span asp-validation-for="CelPhone" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
@@ -29,4 +29,3 @@
         </form>
     </div>
 </div>
-

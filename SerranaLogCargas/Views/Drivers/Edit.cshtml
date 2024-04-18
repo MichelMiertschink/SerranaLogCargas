@@ -1,0 +1,34 @@
+﻿@model SerranaLogCargas.Models.Driver
+
+@{
+    ViewData["Title"] = "Motorista";
+}
+
+<h1>Editar</h1>
+<h4>@ViewData["Title"]</h4>
+<h4>Driver</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CelPhone" class="control-label"></label>
+                <input asp-for="CelPhone" class="form-control" />
+                <span asp-validation-for="CelPhone" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Gravar" class="btn btn-secondary" /> |
+                <a asp-action="Index" class="btn">Retornar</a>
+            </div>
+        </form>
+    </div>
+</div>
+

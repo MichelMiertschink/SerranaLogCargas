@@ -62,6 +62,25 @@ namespace SerranaLogCargas.Migrations
                     b.ToTable("Customers");
                 });
 
+            modelBuilder.Entity("SerranaLogCargas.Models.Driver", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("CelPhone")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Driver");
+                });
+
             modelBuilder.Entity("SerranaLogCargas.Models.State", b =>
                 {
                     b.Property<int>("Id")

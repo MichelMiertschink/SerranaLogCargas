@@ -1,7 +1,7 @@
-﻿@model IEnumerable<SerranaLogCargas.Models.State>
+﻿@model IEnumerable<SerranaLogCargas.Models.Driver>
 
 @{
-    ViewData["Title"] = "Estados";
+    ViewData["Title"] = "Motoristas";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -9,34 +9,33 @@
 <p>
     <a asp-action="Create" class="btn btn-primary">Novo</a>
 </p>
-<table class="table table-dark table-striped table-hover">
+<table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Acronym)
+                @Html.DisplayNameFor(model => model.CelPhone)
             </th>
-            <th>Operações</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Acronym)
-                </td>
-                <td>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CelPhone)
+            </td>
+            <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="badge bg-primary">Editar</a>
                     <a asp-action="Details" asp-route-id="@item.Id" class="badge bg-secondary">Detalhes</a>
                     <a asp-action="Delete" asp-route-id="@item.Id" class="badge bg-danger">Excluir</a>
-                </td>
-            </tr>
-        }
+            </td>
+        </tr>
+}
     </tbody>
 </table>

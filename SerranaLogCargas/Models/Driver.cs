@@ -10,7 +10,9 @@ namespace SerranaLogCargas.Models
         [Display(Name = "Nome")]
         public string Name { get; set; }
         [Display(Name ="Celular")]
+        [StringLength(11, ErrorMessage = "Tamanho informado incorreto")]
         [DataType(DataType.PhoneNumber)]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "##-#####-####")]
         public string CelPhone { get; set; }
 
         public Driver ()

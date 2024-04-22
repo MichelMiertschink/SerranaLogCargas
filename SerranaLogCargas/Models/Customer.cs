@@ -7,7 +7,8 @@ namespace SerranaLogCargas.Models
         [Key]
         public int Id { get; set; }
         [Display(Name = "CNPJ")]
-        [StringLength(14, ErrorMessage = "Tamanho informado incorreto")]
+        [StringLength(15, ErrorMessage = "Tamanho informado incorreto")]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "###.###.###/####-##")]
         public string CNPJ { get; set; }
         [Display(Name = "Razão Social")]
         public string CorporateReason { get; set; }

@@ -15,7 +15,7 @@ namespace SerranaLogCargas.Services
 
         public async Task<List<City>> FindAllAsync()
         {
-            return await _context.Cities.ToListAsync();
+            return await _context.Cities.Include(obj => obj.State).ToListAsync();
         }
 
         public async Task InsertAsync(City obj)

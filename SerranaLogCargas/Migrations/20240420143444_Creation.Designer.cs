@@ -10,8 +10,8 @@ using SerranaLogCargas.Data;
 namespace SerranaLogCargas.Migrations
 {
     [DbContext(typeof(SerranaLogCargasContext))]
-    [Migration("20240418015049_InitialCreation")]
-    partial class InitialCreation
+    [Migration("20240420143444_Creation")]
+    partial class Creation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,8 +48,8 @@ namespace SerranaLogCargas.Migrations
 
                     b.Property<string>("CNPJ")
                         .IsRequired()
-                        .HasMaxLength(14)
-                        .HasColumnType("varchar(14)");
+                        .HasMaxLength(15)
+                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("CorporateReason")
                         .IsRequired()
@@ -72,7 +72,8 @@ namespace SerranaLogCargas.Migrations
 
                     b.Property<string>("CelPhone")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(11)
+                        .HasColumnType("varchar(11)");
 
                     b.Property<string>("Name")
                         .IsRequired()

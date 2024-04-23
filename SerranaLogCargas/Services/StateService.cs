@@ -16,5 +16,6 @@ namespace SerranaLogCargas.Services
         {
             return await _context.States.OrderBy(x => x.Name).ToListAsync();
         }
+       
     }
 }

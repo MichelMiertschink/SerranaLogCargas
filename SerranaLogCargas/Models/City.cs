@@ -10,6 +10,7 @@ namespace SerranaLogCargas.Models
         [Required (ErrorMessage = "Informe o nome da cidade")]
         public string Name { get; set; }
         [Display(Name = "Estado")]
+        [Required(ErrorMessage = "Informe o estado")]
         public State State { get; set; }
         [Display(Name = "Estado")]
         public int StateId { get; set; }

@@ -2,7 +2,6 @@
 using SerranaLogCargas.Models;
 using SerranaLogCargas.Models.ViewModels;
 using SerranaLogCargas.Services;
-using SerranaLogCargas.Services.Exceptions;
 using System.Diagnostics;
 
 namespace SerranaLogCargas.Controllers
@@ -92,7 +91,7 @@ namespace SerranaLogCargas.Controllers
 
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
+            if (id != null)
             {
                 return RedirectToAction(nameof(Error), new { message = "ID não fornecido" });
             }
@@ -109,19 +108,26 @@ namespace SerranaLogCargas.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit (int id, City city)
+        public async Task<IActionResult> Edit (int id, City city )
         {
+           if (ModelState.IsValid)
+            {
+                var states = await _stateService.FindAllAsync();
+                var viewModel = new CityFormViewModel { City = city , States = states };
+                return View(viewModel);
+            }
             if (id != city.Id)
             {
                 return RedirectToAction(nameof(Error), new { message = "ID não fornecido" });
             }
             try
             {
-                _cityService.UpdateAsync(city);
+                await _cityService.UpdateAsync(city);
                 return RedirectToAction(nameof(Index));
-            } catch (NotFoundException)
+            }
+            catch (ApplicationException e)
             {
-                return RedirectToAction(nameof(Error), new { message = "ID não encontrada" });
+                return RedirectToAction(nameof(Error), new { message = e.Message });
             }
         }
 

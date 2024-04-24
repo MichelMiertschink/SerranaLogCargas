@@ -39,7 +39,8 @@ namespace SerranaLogCargas.Services
         
         public async Task UpdateAsync(City obj)
         {
-            if (!_context.Cities.Any(x => x.Id == obj.Id))
+            bool hasAny = await _context.Cities.AnyAsync(x => x.Id == obj.Id);
+            if (!hasAny)
             {
                 throw new NotFoundException("Id não encontrada");
             }
@@ -51,7 +52,7 @@ namespace SerranaLogCargas.Services
             }
             catch (DbConcurrencyException e)
             {
-                throw new DbConcurrencyException(e.Message);
+                throw new DbConcurrencyException(e.Message + "Erro de DATABASE");
             }
         }
     

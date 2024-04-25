@@ -20,6 +20,7 @@
             <div class="form-group">
                 <label asp-for="City.StateId" class="control-label"></label>
                 <select asp-for="City.StateId" asp-items="@(new SelectList(Model.States, "Id", "Name"))" class="form-control"></select>
+                <a asp-controller="States" asp-action="Create" class="badge bg-primary">Novo Estado</a>
             </div>
             <br />
             <div class="form-group">

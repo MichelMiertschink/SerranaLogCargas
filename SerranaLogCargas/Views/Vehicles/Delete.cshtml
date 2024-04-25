@@ -1,0 +1,38 @@
+﻿@model SerranaLogCargas.Models.Vehicle;
+
+@{
+    ViewData["Title"] = "Veículos";
+}
+
+<h1>Excluir</h1>
+<h4>@ViewData["Title"]</h4>
+<h3>Tem certeza que deseja excluir ?</h3>
+<div>
+    <hr/>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Plate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Plate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Driver)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Driver.Name)
+        </dd>
+    </dl>
+    <hr />
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Excluir" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-primary">Retornar</a>
+    </form>
+</div>

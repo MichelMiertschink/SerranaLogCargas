@@ -1,0 +1,35 @@
+﻿@model SerranaLogCargas.Models.Vehicle
+
+@{
+    ViewData["Title"] = "Veículos";
+}
+
+<h1>Detalhes</h1>
+<h4>@ViewData["Title"]</h4>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Plate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Plate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Driver)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Driver.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">Editar</a> |
+    <a asp-action="Index" class="btn">Retornar</a>
+</div>

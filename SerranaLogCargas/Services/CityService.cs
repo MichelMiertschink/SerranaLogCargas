@@ -52,7 +52,7 @@ namespace SerranaLogCargas.Services
             }
             catch (DbConcurrencyException e)
             {
-                throw new DbConcurrencyException(e.Message + "Erro de DATABASE");
+                throw new DbConcurrencyException(e.Message);
             }
         }
     

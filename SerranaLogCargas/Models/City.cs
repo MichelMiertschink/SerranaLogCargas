@@ -6,12 +6,16 @@ namespace SerranaLogCargas.Models
     {
         [Key]
         public int Id { get; set; }
+
         [Display(Name = "Cidade")]
         [Required (ErrorMessage = "Informe o nome da cidade")]
         public string Name { get; set; }
+
         [Display(Name = "Estado")]
         [Required(ErrorMessage = "Informe o estado")]
         public State State { get; set; }
+        
+        [Display(Name = "Estado")]
         public int StateId { get; set; }
 
         // Colocar campo para o código IBGE

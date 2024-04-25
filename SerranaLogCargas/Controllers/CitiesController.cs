@@ -91,7 +91,7 @@ namespace SerranaLogCargas.Controllers
 
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id != null)
+            if (id == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "ID não fornecido" });
             }

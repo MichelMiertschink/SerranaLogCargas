@@ -12,7 +12,8 @@ namespace SerranaLogCargas.Data
         public DbSet<State> States { get; set; } = default!;
         public DbSet<City> Cities {  get; set; } = default!;
         public DbSet<Customer> Customers { get; set; } = default!;
-        public DbSet<SerranaLogCargas.Models.Driver>? Driver { get; set; }
-        public DbSet<SerranaLogCargas.Models.LoadScheduling>? LoadScheduling { get; set; }
+        public DbSet<SerranaLogCargas.Models.Driver>? Driver { get; set; } = default!;
+        public DbSet<SerranaLogCargas.Models.LoadScheduling>? LoadScheduling { get; set; } = default!;
+        public DbSet<SerranaLogCargas.Models.Vehicle> Vehicles { get; set; } = default!;
     }
 }

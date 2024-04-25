@@ -16,6 +16,7 @@ namespace SerranaLogCargas.Models
         [Display(Name ="Descrição")]
         public string Description { get; set; }
 
+        [Display(Name = "Motorista")]
         public Driver Driver { get; set; }
         
         [Display(Name = "Motorista")]
@@ -26,12 +27,12 @@ namespace SerranaLogCargas.Models
         {
         }
 
-        public Vehicle (int id, string plate, string description, Driver driver)
+        public Vehicle(int id, string plate, string description, Driver driver)
         {
             Id = id;
             Plate = plate;
             Description = description;
             Driver = driver;
-        } 
+        }
     }
 }

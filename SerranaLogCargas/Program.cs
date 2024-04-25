@@ -23,6 +23,7 @@ namespace SerranaLogCargas
             builder.Services.AddScoped<CityService>();
             builder.Services.AddScoped<StateService>();
             builder.Services.AddScoped<CustomerService>();
+            builder.Services.AddScoped<VehicleService>();
 
 
             // Seeding service

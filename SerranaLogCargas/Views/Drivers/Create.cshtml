@@ -17,8 +17,13 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="CPF" class="control-label"></label>
+                <input asp-for="CPF" class="form-control" placeholder="Apenas números" />
+                <span asp-validation-for="CPF" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="CelPhone" class="control-label"></label>
-                <input asp-for="CelPhone" class="form-control" placeholder="apenas números"/>
+                <input asp-for="CelPhone" class="form-control" placeholder="Apenas números"/>
                 <span asp-validation-for="CelPhone" class="text-danger"></span>
             </div>
             <br />

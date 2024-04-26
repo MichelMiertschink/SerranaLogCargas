@@ -11,8 +11,8 @@ using SerranaLogCargas.Data;
 namespace SerranaLogCargas.Migrations
 {
     [DbContext(typeof(SerranaLogCargasContext))]
-    [Migration("20240425010659_Vehicles")]
-    partial class Vehicles
+    [Migration("20240426230428_InitialCreation")]
+    partial class InitialCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -71,6 +71,11 @@ namespace SerranaLogCargas.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("CPF")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("varchar(11)");
+
                     b.Property<string>("CelPhone")
                         .IsRequired()
                         .HasMaxLength(11)
@@ -112,8 +117,14 @@ namespace SerranaLogCargas.Migrations
                     b.Property<int>("DestinyId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("IncludeDate")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int>("OriginId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("PD")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<bool>("Pay")
                         .HasColumnType("tinyint(1)");

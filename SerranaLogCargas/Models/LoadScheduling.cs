@@ -7,6 +7,8 @@ namespace SerranaLogCargas.Models
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name ="Dt. Inclusão")]
+        public DateTime IncludeDate { get; set; }
 
         [Display(Name = "BOL")]
         public bool Bol {  get; set; }
@@ -25,12 +27,18 @@ namespace SerranaLogCargas.Models
 
         [Display(Name = "Dt. Desc.")]
         public DateTime UnloadDate { get; set; }
+        [Display(Name ="PD")]
+        // Peso de descarga necessário
+        public bool PD { get; set; }
+
+        
 
         // Vários campos com possíveis Enums
-        // G
-        // C
-        // CK
-        // M
+        // G = indica se é F=frota, T=terceio A = Agregado
+        // C = R=Raster S=Skymark (gerenciadora de risco)
+        // CK = Se tem que fazer checklistp do monitoramento
+        // M = Monitorado (se for tem que ter CK)
+
         [Display(Name = "Peso")]
         public float Weigth { get; set; }
 

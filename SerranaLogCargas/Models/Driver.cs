@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace SerranaLogCargas.Models
 {
@@ -9,6 +10,12 @@ namespace SerranaLogCargas.Models
         [Required]
         [Display(Name = "Nome")]
         public string Name { get; set; }
+
+        [Required]
+        [Display(Name ="CPF")]
+        [StringLength(11, ErrorMessage = "Tamanho informado incorreto")]
+        public string CPF { get; set; }
+
         [Display(Name ="Celular")]
         [StringLength(11, ErrorMessage = "Tamanho informado incorreto")]
         [DataType(DataType.PhoneNumber)]
@@ -19,10 +26,11 @@ namespace SerranaLogCargas.Models
         {
         }
 
-        public Driver(int id, string name, string celPhone)
+        public Driver(int id, string name, string cPF, string celPhone)
         {
             Id = id;
             Name = name;
+            CPF = cPF;
             CelPhone = celPhone;
         }
     }

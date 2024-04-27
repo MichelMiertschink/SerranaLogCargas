@@ -8,6 +8,7 @@ namespace SerranaLogCargas.Models
         [Key]
         public int Id { get; set; }
         [Display(Name ="Dt. Inclusão")]
+        [DataType(DataType.DateTime)]
         public DateTime IncludeDate { get; set; }
 
         [Display(Name = "BOL")]
@@ -26,6 +27,8 @@ namespace SerranaLogCargas.Models
         public int DestinyId { get; set; }
 
         [Display(Name = "Dt. Desc.")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0,c}")]
         public DateTime UnloadDate { get; set; }
         [Display(Name ="PD")]
         // Peso de descarga necessário

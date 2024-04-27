@@ -1,4 +1,4 @@
-﻿@model SerranaLogCargas.Models.Driver
+﻿@model SerranaLogCargas.Models.ViewModels.DriverFormViewModel
 
 @{
     ViewData["Title"] = "Motorista";
@@ -12,19 +12,19 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="Driver.Name" class="control-label"></label>
+                <input asp-for="Driver.Name" class="form-control" />
+                <span asp-validation-for="Driver.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CPF" class="control-label"></label>
-                <input asp-for="CPF" class="form-control" placeholder="Apenas números" />
-                <span asp-validation-for="CPF" class="text-danger"></span>
+                <label asp-for="Driver.CPF" class="control-label"></label>
+                <input asp-for="Driver.CPF" class="form-control" placeholder="Apenas números" />
+                <span asp-validation-for="Driver.CPF" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CelPhone" class="control-label"></label>
-                <input asp-for="CelPhone" class="form-control" placeholder="Apenas números"/>
-                <span asp-validation-for="CelPhone" class="text-danger"></span>
+                <label asp-for="Driver.CelPhone" class="control-label"></label>
+                <input asp-for="Driver.CelPhone" class="form-control" placeholder="Apenas números" />
+                <span asp-validation-for="Driver.CelPhone" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">

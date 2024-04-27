@@ -1,136 +1,110 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Threading.Tasks;
+using SerranaLogCargas.Models;
 using Microsoft.EntityFrameworkCore;
 using SerranaLogCargas.Data;
-using SerranaLogCargas.Models;
+using SerranaLogCargas.Models.ViewModels;
+using SerranaLogCargas.Services;
 
 namespace SerranaLogCargas.Controllers
 {
     public class DriversController : Controller
     {
-        private readonly SerranaLogCargasContext _context;
-
-        public DriversController(SerranaLogCargasContext context)
+        private readonly DriverService _driverService;
+        public DriversController(DriverService driverService)
         {
-            _context = context;
+            _driverService = driverService;
         }
 
         // GET: Drivers
         public async Task<IActionResult> Index()
         {
-              return _context.Driver != null ? 
-                          View(await _context.Driver.ToListAsync()) :
-                          Problem("Entity set 'SerranaLogCargasContext.Driver'  is null.");
+            var list = await _driverService.FindAllAsync();
+            return View(list);
         }
 
         // GET: Drivers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Driver == null)
+            if (id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não fornecido" });
             }
 
-            var driver = await _context.Driver
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var driver = await _driverService.FindByIdAsync(id.Value);
             if (driver == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não encontrado" });
             }
 
             return View(driver);
         }
 
         // GET: Drivers/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             return View();
         }
 
         // POST: Drivers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,CelPhone")] Driver driver)
+        public async Task<IActionResult> Create(Driver driver)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(driver);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(driver);
+            await _driverService.InsertAsync(driver);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Drivers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Driver == null)
+            if (id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não fornecido" });
             }
 
-            var driver = await _context.Driver.FindAsync(id);
+            var driver = await _driverService.FindByIdAsync(id.Value);
             if (driver == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não encontrado" });
             }
             return View(driver);
         }
 
         // POST: Drivers/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,CelPhone")] Driver driver)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,CPF,CelPhone")] Driver driver)
         {
-            if (id != driver.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(driver);
-                    await _context.SaveChangesAsync();
+                    await _driverService.UpdateAsync(driver);
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (ApplicationException e)
                 {
-                    if (!DriverExists(driver.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    return RedirectToAction(nameof(Error), new { message = e.Message });
                 }
-                return RedirectToAction(nameof(Index));
             }
-            return View(driver);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Drivers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Driver == null)
+            if (id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não fornecido" });
             }
 
-            var driver = await _context.Driver
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var driver = await _driverService.FindByIdAsync(id.Value);
             if (driver == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "ID não encontrado" });
             }
 
             return View(driver);
@@ -141,23 +115,25 @@ namespace SerranaLogCargas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Driver == null)
+            try
             {
-                return Problem("Entity set 'SerranaLogCargasContext.Driver'  is null.");
+                await _driverService.Remove(id);
+                return RedirectToAction(nameof(Index));
             }
-            var driver = await _context.Driver.FindAsync(id);
-            if (driver != null)
+            catch (Exception e)
             {
-                _context.Driver.Remove(driver);
+                return RedirectToAction(nameof(Error), new { message = e.Message });
             }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
-        private bool DriverExists(int id)
+        public IActionResult Error(string message)
         {
-          return (_context.Driver?.Any(e => e.Id == id)).GetValueOrDefault();
+            var viewModel = new ErrorViewModel
+            {
+                Message = message,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+            return View(viewModel);
         }
     }
 }

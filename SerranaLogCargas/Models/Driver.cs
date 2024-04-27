@@ -11,7 +11,7 @@ namespace SerranaLogCargas.Models
         [Display(Name = "Nome")]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O CPF do motorista é obrigatório", AllowEmptyStrings = false)]
         [Display(Name ="CPF")]
         [StringLength(11, ErrorMessage = "Tamanho informado incorreto")]
         public string CPF { get; set; }

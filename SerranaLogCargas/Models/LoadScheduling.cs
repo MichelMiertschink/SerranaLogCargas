@@ -16,10 +16,10 @@ namespace SerranaLogCargas.Models
 
         [Display(Name = "Cliente")]
         public Customer Customer { get; set; }
-        public int CustomerId {  get; set; }
+        public int CustomerId { get; set; }
 
         [Display(Name = "Origem")]
-        public City CityOrigin {  get; set; }
+        public City CityOrigin { get; set; }
         public int OriginId { get; set; }
         
         [Display(Name = "Destino")]

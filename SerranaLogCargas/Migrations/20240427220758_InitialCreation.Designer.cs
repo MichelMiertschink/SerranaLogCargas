@@ -11,7 +11,7 @@ using SerranaLogCargas.Data;
 namespace SerranaLogCargas.Migrations
 {
     [DbContext(typeof(SerranaLogCargasContext))]
-    [Migration("20240426230428_InitialCreation")]
+    [Migration("20240427220758_InitialCreation")]
     partial class InitialCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

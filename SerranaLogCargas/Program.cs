@@ -25,6 +25,7 @@ namespace SerranaLogCargas
             builder.Services.AddScoped<CustomerService>();
             builder.Services.AddScoped<VehicleService>();
             builder.Services.AddScoped<DriverService>();
+            builder.Services.AddScoped<LoadSchedulingService>();
 
 
             // Seeding service

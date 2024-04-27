@@ -21,15 +21,17 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastros</a>
                             <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-area="" asp-controller="Customers" asp-action="Index">Clientes</a>
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" asp-area="" asp-controller="States" asp-action="Index">Estados</a>
                                 <a class="dropdown-item" asp-area="" asp-controller="Cities" asp-action="Index">Cidades</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-area="" asp-controller="Customers" asp-action="Index">Clientes</a>
                                 <a class="dropdown-item" asp-area="" asp-controller="Vehicles" asp-action="Index">Veículos</a>
                                 <a class="dropdown-item" asp-area="" asp-controller="Drivers" asp-action="Index">Motoristas</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-controller="LoadSchedulings">Cargas</a>
                             </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="LoadScheduling">Cargas</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Components.Web;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SerranaLogCargas.Models
 {
@@ -12,7 +11,7 @@ namespace SerranaLogCargas.Models
         public DateTime IncludeDate { get; set; }
 
         [Display(Name = "BOL")]
-        public bool Bol {  get; set; }
+        public bool? Bol {  get; set; }
 
         [Display(Name = "Cliente")]
         public Customer Customer { get; set; }
@@ -20,19 +19,17 @@ namespace SerranaLogCargas.Models
 
         [Display(Name = "Origem")]
         public City CityOrigin { get; set; }
-        public int OriginId { get; set; }
-        
+                
         [Display(Name = "Destino")]
         public City CityDestiny { get; set; }
-        public int DestinyId { get; set; }
 
         [Display(Name = "Dt. Desc.")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0,c}")]
-        public DateTime UnloadDate { get; set; }
+        public DateTime? UnloadDate { get; set; }
         [Display(Name ="PD")]
         // Peso de descarga necessário
-        public bool PD { get; set; }
+        public bool? PD { get; set; }
 
         
 
@@ -43,25 +40,25 @@ namespace SerranaLogCargas.Models
         // M = Monitorado (se for tem que ter CK)
 
         [Display(Name = "Peso")]
-        public float Weigth { get; set; }
+        public float? Weigth { get; set; }
 
         [Display(Name = "Tranpor")]
-        public float VlTranspor {  get; set; }
+        public float? VlTranspor {  get; set; }
 
         [Display(Name = "Vl Contrato")]
-        public float VlContract {  get; set; }
+        public float? VlContract {  get; set; }
 
         [Display(Name = "Vl Adiant.")]
-        public float Vladvance {  get; set; }
+        public float? Vladvance {  get; set; }
 
         [Display(Name = "R$")]
-        public bool Pay {  get; set; }
+        public bool? Pay {  get; set; }
 
         [Display(Name = "Contrato")]
         public int ContractId { get; set; }
 
         [Display(Name = "CT-e")]
-        public bool Cte {  get; set; }
+        public bool? Cte {  get; set; }
 
     }
 }

@@ -94,7 +94,7 @@ namespace SerranaLogCargas.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<bool>("Bol")
+                    b.Property<bool?>("Bol")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<int>("CityDestinyId")
@@ -106,40 +106,34 @@ namespace SerranaLogCargas.Migrations
                     b.Property<int>("ContractId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Cte")
+                    b.Property<bool?>("Cte")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("DestinyId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("IncludeDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("OriginId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("PD")
+                    b.Property<bool?>("PD")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<bool>("Pay")
+                    b.Property<bool?>("Pay")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<DateTime>("UnloadDate")
+                    b.Property<DateTime?>("UnloadDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<float>("VlContract")
+                    b.Property<float?>("VlContract")
                         .HasColumnType("float");
 
-                    b.Property<float>("VlTranspor")
+                    b.Property<float?>("VlTranspor")
                         .HasColumnType("float");
 
-                    b.Property<float>("Vladvance")
+                    b.Property<float?>("Vladvance")
                         .HasColumnType("float");
 
-                    b.Property<float>("Weigth")
+                    b.Property<float?>("Weigth")
                         .HasColumnType("float");
 
                     b.HasKey("Id");

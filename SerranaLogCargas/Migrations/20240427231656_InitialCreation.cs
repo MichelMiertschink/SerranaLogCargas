@@ -121,21 +121,19 @@ namespace SerranaLogCargas.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     IncludeDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    Bol = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Bol = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     CustomerId = table.Column<int>(type: "int", nullable: false),
                     CityOriginId = table.Column<int>(type: "int", nullable: false),
-                    OriginId = table.Column<int>(type: "int", nullable: false),
                     CityDestinyId = table.Column<int>(type: "int", nullable: false),
-                    DestinyId = table.Column<int>(type: "int", nullable: false),
-                    UnloadDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    PD = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    Weigth = table.Column<float>(type: "float", nullable: false),
-                    VlTranspor = table.Column<float>(type: "float", nullable: false),
-                    VlContract = table.Column<float>(type: "float", nullable: false),
-                    Vladvance = table.Column<float>(type: "float", nullable: false),
-                    Pay = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    UnloadDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    PD = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    Weigth = table.Column<float>(type: "float", nullable: true),
+                    VlTranspor = table.Column<float>(type: "float", nullable: true),
+                    VlContract = table.Column<float>(type: "float", nullable: true),
+                    Vladvance = table.Column<float>(type: "float", nullable: true),
+                    Pay = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     ContractId = table.Column<int>(type: "int", nullable: false),
-                    Cte = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                    Cte = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
                 constraints: table =>
                 {

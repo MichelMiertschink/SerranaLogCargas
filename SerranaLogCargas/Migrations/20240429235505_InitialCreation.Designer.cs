@@ -11,7 +11,7 @@ using SerranaLogCargas.Data;
 namespace SerranaLogCargas.Migrations
 {
     [DbContext(typeof(SerranaLogCargasContext))]
-    [Migration("20240427220758_InitialCreation")]
+    [Migration("20240429235505_InitialCreation")]
     partial class InitialCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -114,14 +114,8 @@ namespace SerranaLogCargas.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("DestinyId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("IncludeDate")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<int>("OriginId")
-                        .HasColumnType("int");
 
                     b.Property<bool>("PD")
                         .HasColumnType("tinyint(1)");

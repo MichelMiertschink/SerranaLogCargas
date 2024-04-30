@@ -18,12 +18,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Customer)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OriginId)
+            @* <th>
+                @Html.DisplayNameFor(model => model.CityOrigin)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DestinyId)
-            </th>
+                @Html.DisplayNameFor(model => model.CityDestiny)
+            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.UnloadDate)
             </th>
@@ -61,10 +61,10 @@
                 @Html.DisplayFor(modelItem => item.Customer.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OriginId)
+                @Html.DisplayFor(modelItem => item.CityOrigin)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DestinyId)
+                @Html.DisplayFor(modelItem => item.CityDestiny)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UnloadDate)

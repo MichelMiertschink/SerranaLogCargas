@@ -20,11 +20,11 @@ namespace SerranaLogCargas.Models
 
         [Display(Name = "Origem")]
         public City CityOrigin { get; set; }
-        public int OriginId { get; set; }
+        public int CityOriginId { get; set; }
         
         [Display(Name = "Destino")]
         public City CityDestiny { get; set; }
-        public int DestinyId { get; set; }
+        public int CityDestinyId { get; set; }
 
         [Display(Name = "Dt. Desc.")]
         [DataType(DataType.Date)]
@@ -63,5 +63,27 @@ namespace SerranaLogCargas.Models
         [Display(Name = "CT-e")]
         public bool Cte {  get; set; }
 
+        public LoadScheduling ()
+        {
+        }
+
+        public LoadScheduling(int id, DateTime includeDate, bool bol, Customer customer,/* City cityOrigin, City cityDestiny,*/ DateTime unloadDate, bool pD, float weigth, float vlTranspor, float vlContract, float vladvance, bool pay, int contractId, bool cte)
+        {
+            Id = id;
+            IncludeDate = includeDate;
+            Bol = bol;
+            Customer = customer;
+            //CityOrigin = cityOrigin;
+            //CityDestiny = cityDestiny;
+            UnloadDate = unloadDate;
+            PD = pD;
+            Weigth = weigth;
+            VlTranspor = vlTranspor;
+            VlContract = vlContract;
+            Vladvance = vladvance;
+            Pay = pay;
+            ContractId = contractId;
+            Cte = cte;
+        }
     }
 }

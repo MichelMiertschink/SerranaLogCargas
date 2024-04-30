@@ -21,16 +21,16 @@
                 <label asp-for="LoadScheduling.CustomerId" class="control-label"></label>
                 <select asp-for="LoadScheduling.CustomerId" asp-items="@(new SelectList(Model.Customer, "Id", "CorporateReason"))" class="form-control"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="LoadScheduling.OriginId" class="control-label"></label>
-                <select asp-for="LoadScheduling.OriginId" asp-items="@(new SelectList(Model.City, "Id", "Name"))" class="form-control"></select>
-                <span asp-validation-for="LoadScheduling.OriginId" class="text-danger"></span>
+           @*  <div class="form-group">
+                <label asp-for="LoadScheduling.CityOrigin" class="control-label"></label>
+                <select asp-for="LoadScheduling.CityOrigin" asp-items="@(new SelectList(Model.City, "Id", "Name"))" class="form-control"></select>
+                <span asp-validation-for="LoadScheduling.CityOrigin" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LoadScheduling.DestinyId" class="control-label"></label>
-                <select asp-for="LoadScheduling.DestinyId" asp-items="@(new SelectList(Model.City, "Id", "Name"))" class="form-control"></select>
-                <span asp-validation-for="LoadScheduling.DestinyId" class="text-danger"></span>
-            </div>
+                <label asp-for="LoadScheduling.CityOrigin" class="control-label"></label>
+                <select asp-for="LoadScheduling.CityOrigin" asp-items="@(new SelectList(Model.City, "Id", "Name"))" class="form-control"></select>
+                <span asp-validation-for="LoadScheduling.CityOrigin" class="text-danger"></span>
+            </div> *@
             <div class="form-group">
                 <label asp-for="LoadScheduling.UnloadDate" class="control-label"></label>
                 <input asp-for="LoadScheduling.UnloadDate" class="form-control" />

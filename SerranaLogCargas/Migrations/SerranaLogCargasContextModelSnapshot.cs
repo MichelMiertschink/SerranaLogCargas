@@ -112,14 +112,8 @@ namespace SerranaLogCargas.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("DestinyId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("IncludeDate")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<int>("OriginId")
-                        .HasColumnType("int");
 
                     b.Property<bool>("PD")
                         .HasColumnType("tinyint(1)");

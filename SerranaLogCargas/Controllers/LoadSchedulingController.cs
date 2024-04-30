@@ -56,8 +56,6 @@ namespace SerranaLogCargas.Controllers
 
             try
             {
-                loadScheduling.CityDestinyId = 1;
-                loadScheduling.CityOriginId = 2;
                 await _loadSchedulingService.InsertAsync(loadScheduling);
                 return RedirectToAction(nameof(Index));
             }

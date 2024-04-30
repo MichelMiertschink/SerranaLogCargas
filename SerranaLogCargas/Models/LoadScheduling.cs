@@ -28,7 +28,6 @@ namespace SerranaLogCargas.Models
 
         [Display(Name = "Dt. Desc.")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0,c}")]
         public DateTime UnloadDate { get; set; }
         [Display(Name ="PD")]
         // Peso de descarga necessário
@@ -67,14 +66,14 @@ namespace SerranaLogCargas.Models
         {
         }
 
-        public LoadScheduling(int id, DateTime includeDate, bool bol, Customer customer,/* City cityOrigin, City cityDestiny,*/ DateTime unloadDate, bool pD, float weigth, float vlTranspor, float vlContract, float vladvance, bool pay, int contractId, bool cte)
+        public LoadScheduling(int id, DateTime includeDate, bool bol, Customer customer, City cityOrigin, City cityDestiny, DateTime unloadDate, bool pD, float weigth, float vlTranspor, float vlContract, float vladvance, bool pay, int contractId, bool cte)
         {
             Id = id;
             IncludeDate = includeDate;
             Bol = bol;
             Customer = customer;
-            //CityOrigin = cityOrigin;
-            //CityDestiny = cityDestiny;
+            CityOrigin = cityOrigin;
+            CityDestiny = cityDestiny;
             UnloadDate = unloadDate;
             PD = pD;
             Weigth = weigth;

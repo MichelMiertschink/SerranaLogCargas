@@ -1,86 +1,81 @@
-﻿@model SerranaLogCargas.Models.LoadScheduling
+﻿@model SerranaLogCargas.Models.ViewModels.LoadSchedulingFormViewModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Carregamento";
 }
 
-<h1>Edit</h1>
-
-<h4>LoadScheduling</h4>
+<h1>Editar</h1>
+<h4>@ViewData["Title"]</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="LoadScheduling.Id" />
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Bol" /> @Html.DisplayNameFor(model => model.Bol)
+                    <input class="form-check-input" asp-for="LoadScheduling.Bol" /> @Html.DisplayNameFor(model => model.LoadScheduling.Bol)
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="CustomerId" class="control-label"></label>
-                <select asp-for="CustomerId" class="form-control" asp-items="ViewBag.CustomerId"></select>
-                <span asp-validation-for="CustomerId" class="text-danger"></span>
+                <label asp-for="LoadScheduling.CustomerId" class="control-label"></label>
+                <select asp-for="LoadScheduling.CustomerId" asp-items="@(new SelectList(Model.Customer, "Id", "CorporateReason"))" class="form-control"></select>
+                <span asp-validation-for="LoadScheduling.CustomerId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OriginId" class="control-label"></label>
-                <input asp-for="OriginId" class="form-control" />
-                <span asp-validation-for="OriginId" class="text-danger"></span>
+                <label asp-for="LoadScheduling.CityOriginId" class="control-label"></label>
+                <select asp-for="LoadScheduling.CityOriginId" asp-items="@(new SelectList(Model.City, "Id", "Name"))" class="form-control"></select>
+                <span asp-validation-for="LoadScheduling.CityOriginId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DestinyId" class="control-label"></label>
-                <input asp-for="DestinyId" class="form-control" />
-                <span asp-validation-for="DestinyId" class="text-danger"></span>
+                <label asp-for="LoadScheduling.CityDestinyId" class="control-label"></label>
+                <select asp-for="LoadScheduling.CityDestinyId" asp-items="@(new SelectList(Model.City, "Id", "Name"))" class="form-control"></select>
+                <span asp-validation-for="LoadScheduling.CityDestinyId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UnloadDate" class="control-label"></label>
-                <input asp-for="UnloadDate" class="form-control" />
-                <span asp-validation-for="UnloadDate" class="text-danger"></span>
+                <label asp-for="LoadScheduling.UnloadDate" class="control-label"></label>
+                <input asp-for="LoadScheduling.UnloadDate" class="form-control" />
+                <span asp-validation-for="LoadScheduling.UnloadDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Weigth" class="control-label"></label>
-                <input asp-for="Weigth" class="form-control" />
-                <span asp-validation-for="Weigth" class="text-danger"></span>
+                <label asp-for="LoadScheduling.Weigth" class="control-label"></label>
+                <input asp-for="LoadScheduling.Weigth" class="form-control" />
+                <span asp-validation-for="LoadScheduling.Weigth" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="VlTranspor" class="control-label"></label>
-                <input asp-for="VlTranspor" class="form-control" />
-                <span asp-validation-for="VlTranspor" class="text-danger"></span>
+                <label asp-for="LoadScheduling.VlTranspor" class="control-label"></label>
+                <input asp-for="LoadScheduling.VlTranspor" class="form-control" />
+                <span asp-validation-for="LoadScheduling.VlTranspor" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="VlContract" class="control-label"></label>
-                <input asp-for="VlContract" class="form-control" />
-                <span asp-validation-for="VlContract" class="text-danger"></span>
+                <label asp-for="LoadScheduling.VlContract" class="control-label"></label>
+                <input asp-for="LoadScheduling.VlContract" class="form-control" />
+                <span asp-validation-for="LoadScheduling.VlContract" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Vladvance" class="control-label"></label>
-                <input asp-for="Vladvance" class="form-control" />
-                <span asp-validation-for="Vladvance" class="text-danger"></span>
+                <label asp-for="LoadScheduling.Vladvance" class="control-label"></label>
+                <input asp-for="LoadScheduling.Vladvance" class="form-control" />
+                <span asp-validation-for="LoadScheduling.Vladvance" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Pay" /> @Html.DisplayNameFor(model => model.Pay)
+                    <input class="form-check-input" asp-for="LoadScheduling.Pay" /> @Html.DisplayNameFor(model => model.Pay)
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="ContractId" class="control-label"></label>
-                <input asp-for="ContractId" class="form-control" />
-                <span asp-validation-for="ContractId" class="text-danger"></span>
+                <label asp-for="LoadScheduling.ContractId" class="control-label"></label>
+                <input asp-for="LoadScheduling.ContractId" class="form-control" />
+                <span asp-validation-for="LoadScheduling.ContractId" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Cte" /> @Html.DisplayNameFor(model => model.Cte)
-                </label>
+            <div>
+                <label asp-for="LoadScheduling.Cte" class="control-label"></label>
+                <input asp-for="LoadScheduling.Cte" class="form-control" />
+                <span asp-validation-for="LoadScheduling.Cte" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-primary" /> |
+                <a asp-action="Index" class="btn btn-outline-primary">Retornar</a>
             </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-

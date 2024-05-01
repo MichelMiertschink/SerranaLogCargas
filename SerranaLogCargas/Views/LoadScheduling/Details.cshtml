@@ -1,11 +1,11 @@
 ﻿@model SerranaLogCargas.Models.LoadScheduling
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Carregamento";
 }
 
-<h1>Details</h1>
-
+<h1>Detalhes</h1>
+<h4>@ViewData["Title"]</h4>
 <div>
     <h4>LoadScheduling</h4>
     <hr />
@@ -23,16 +23,16 @@
             @Html.DisplayFor(model => model.Customer.Id)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OriginId)
+            @Html.DisplayNameFor(model => model.CityOrigin)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OriginId)
+            @Html.DisplayFor(model => model.CityOrigin.Name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DestinyId)
+            @Html.DisplayNameFor(model => model.CityDestiny)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DestinyId)
+            @Html.DisplayFor(model => model.CityDestiny.Name)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.UnloadDate)
@@ -85,6 +85,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a> |
+    <a asp-action="Index" class="btn btn-outline-primary">Retornar</a>
 </div>

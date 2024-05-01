@@ -5,7 +5,6 @@
 }
 
 <h1>@ViewData["Title"]</h1>
-
 <p>
     <a asp-action="Create" class="btn btn-primary">Novo</a>
 </p>
@@ -52,50 +51,51 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bol)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.CorporateReason)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CityOrigin.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CityDestiny.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnloadDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Weigth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VlTranspor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VlContract)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Vladvance)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pay)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContractId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cte)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bol)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.CorporateReason)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CityOrigin.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CityDestiny.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnloadDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Weigth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VlTranspor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VlContract)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vladvance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContractId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cte)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="badge bg-primary">Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="badge bg-secondary">Detalhes</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="badge bg-danger">Excluir</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

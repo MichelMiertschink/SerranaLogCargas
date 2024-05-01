@@ -1,12 +1,12 @@
 ﻿@model SerranaLogCargas.Models.LoadScheduling
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Carregamentos";
 }
 
-<h1>Delete</h1>
-
-<h3>Are you sure you want to delete this?</h3>
+<h1>Excluir</h1>
+<h4>@ViewData["Title"]</h4>
+<h3>Tem certeza que deseja excluir ?</h3>
 <div>
     <h4>LoadScheduling</h4>
     <hr />
@@ -24,16 +24,16 @@
             @Html.DisplayFor(model => model.Customer.Id)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OriginId)
+            @Html.DisplayNameFor(model => model.CityOrigin)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OriginId)
+            @Html.DisplayFor(model => model.CityOrigin.Name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DestinyId)
+            @Html.DisplayNameFor(model => model.CityDestiny)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DestinyId)
+            @Html.DisplayFor(model => model.CityDestiny.Name)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.UnloadDate)
@@ -84,10 +84,10 @@
             @Html.DisplayFor(model => model.Cte)
         </dd>
     </dl>
-    
+    <hr />
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Excluir" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-outline-primary">Retornar</a>
     </form>
 </div>

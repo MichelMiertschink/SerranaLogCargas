@@ -11,8 +11,13 @@ using SerranaLogCargas.Data;
 namespace SerranaLogCargas.Migrations
 {
     [DbContext(typeof(SerranaLogCargasContext))]
+<<<<<<<< HEAD:SerranaLogCargas/Migrations/20240501004035_initialCreation.Designer.cs
     [Migration("20240501004035_initialCreation")]
     partial class initialCreation
+========
+    [Migration("20240427231656_InitialCreation")]
+    partial class InitialCreation
+>>>>>>>> 8d9709726d7ffa1f9aedb76998c0d7f3a9ee9b10:SerranaLogCargas/Migrations/20240427231656_InitialCreation.Designer.cs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -96,7 +101,7 @@ namespace SerranaLogCargas.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<bool>("Bol")
+                    b.Property<bool?>("Bol")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<int>("CityDestinyId")
@@ -108,7 +113,7 @@ namespace SerranaLogCargas.Migrations
                     b.Property<int>("ContractId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Cte")
+                    b.Property<bool?>("Cte")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<int>("CustomerId")
@@ -117,25 +122,25 @@ namespace SerranaLogCargas.Migrations
                     b.Property<DateTime>("IncludeDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<bool>("PD")
+                    b.Property<bool?>("PD")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<bool>("Pay")
+                    b.Property<bool?>("Pay")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<DateTime>("UnloadDate")
+                    b.Property<DateTime?>("UnloadDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<float>("VlContract")
+                    b.Property<float?>("VlContract")
                         .HasColumnType("float");
 
-                    b.Property<float>("VlTranspor")
+                    b.Property<float?>("VlTranspor")
                         .HasColumnType("float");
 
-                    b.Property<float>("Vladvance")
+                    b.Property<float?>("Vladvance")
                         .HasColumnType("float");
 
-                    b.Property<float>("Weigth")
+                    b.Property<float?>("Weigth")
                         .HasColumnType("float");
 
                     b.HasKey("Id");

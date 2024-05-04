@@ -31,7 +31,7 @@ namespace SerranaLogCargas.Controllers
             try
             {
                 var customers = await _customerService.FindAllAsync();
-                var cities = _cityService.FindAll();
+                var cities = await _cityService.FindAllAsync();
                 var viewModel = new LoadSchedulingFormViewModel { Customer = customers, City = cities };
                 return View(viewModel);
             }
@@ -93,7 +93,7 @@ namespace SerranaLogCargas.Controllers
         {
             try
             {
-                await _loadSchedulingService.Remove(id);
+                await _loadSchedulingService.RemoveAsync(id);
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception e)
@@ -122,14 +122,14 @@ namespace SerranaLogCargas.Controllers
             {
                 return RedirectToAction(nameof(Error), new { mnessage = "Id não fornecido" });
             }
-            var loadSchedule = _loadSchedulingService.FindByIdAsync(id.Value);
+            var loadSchedule = await _loadSchedulingService.FindByIdAsync(id.Value);
             if (loadSchedule == null)
             {
                 return RedirectToAction(nameof(Error), new { mnessage = "Id não encontrado" });
             }
             List<Customer> customers = await _customerService.FindAllAsync();
             List<City> cities = await _cityService.FindAllAsync();
-            var viewModel = new LoadSchedulingFormViewModel { Customer = customers, City = cities };
+            var viewModel = new LoadSchedulingFormViewModel { LoadScheduling = loadSchedule, Customer = customers, City = cities };
             return View(viewModel);
         }
 
@@ -152,7 +152,6 @@ namespace SerranaLogCargas.Controllers
                 {
                     message = "----- ID não fornecido  = ID: " + loadScheduling.Id.ToString()
                 });
-
             }
 
             try

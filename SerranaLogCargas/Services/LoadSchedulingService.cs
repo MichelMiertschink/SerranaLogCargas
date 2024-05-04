@@ -38,7 +38,7 @@ namespace SerranaLogCargas.Services
         }
 
 
-        public async Task Remove (int id)
+        public async Task RemoveAsync(int id)
         {
             var loadScheduling = _context.LoadScheduling.Find(id);
             _context.LoadScheduling.Remove(loadScheduling);

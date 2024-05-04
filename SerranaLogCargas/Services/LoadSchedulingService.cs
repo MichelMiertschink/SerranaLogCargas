@@ -31,8 +31,8 @@ namespace SerranaLogCargas.Services
         public async Task<LoadScheduling> FindByIdAsync(int id)
         {
             return await _context.LoadScheduling
-                .Include(obj => obj.CityDestiny)
                 .Include(obj => obj.CityOrigin)
+                .Include(obj => obj.CityDestiny)
                 .Include(obj => obj.Customer)
                 .FirstOrDefaultAsync(obj => obj.Id == id);
         }

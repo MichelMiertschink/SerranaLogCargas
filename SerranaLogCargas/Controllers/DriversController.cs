@@ -46,7 +46,7 @@ namespace SerranaLogCargas.Controllers
         // GET: Drivers/Create
         public async Task<IActionResult> Create()
         {
-            return View();
+            return RedirectToAction(nameof(Create));
         }
 
         // POST: Drivers/Create

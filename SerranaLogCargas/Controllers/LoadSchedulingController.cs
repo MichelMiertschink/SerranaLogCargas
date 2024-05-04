@@ -31,7 +31,7 @@ namespace SerranaLogCargas.Controllers
             try
             {
                 var customers = await _customerService.FindAllAsync();
-                var cities = await _cityService.FindAllAsync();
+                var cities = _cityService.FindAll();
                 var viewModel = new LoadSchedulingFormViewModel { Customer = customers, City = cities };
                 return View(viewModel);
             }
@@ -48,7 +48,7 @@ namespace SerranaLogCargas.Controllers
         {
             if (ModelState.IsValid)
             {
-                var customers = await _customerService.FindAllAsync();
+                var customers = _customerService.FindAll();
                 var cities = await _cityService.FindAllAsync();
                 var viewModel = new LoadSchedulingFormViewModel { Customer = customers, City = cities };
                 return View(viewModel);
@@ -79,7 +79,7 @@ namespace SerranaLogCargas.Controllers
             {
                 return RedirectToAction(nameof(Error), new { mnessage = "Id não fornecido" });
             }
-            var loadSchedule = _loadSchedulingService.FindByIdAsync(id.Value);
+            var loadSchedule = await _loadSchedulingService.FindByIdAsync(id.Value);
             if (loadSchedule == null)
             {
                 return RedirectToAction(nameof(Error), new { mnessage = "Id não encontrado" });
@@ -108,12 +108,12 @@ namespace SerranaLogCargas.Controllers
             {
                 return RedirectToAction(nameof(Error), new { mnessage = "Id não fornecido" });
             }
-            var loadSchedule = _loadSchedulingService.FindByIdAsync(id.Value);
-            if (loadSchedule == null)
+            var obj = await _loadSchedulingService.FindByIdAsync(id.Value);
+            if (obj == null)
             {
                 return RedirectToAction(nameof(Error), new { mnessage = "Id não encontrado" });
             }
-            return View(loadSchedule);
+            return View(obj);
         }
 
         public async Task<IActionResult> Edit(int? id)
@@ -139,14 +139,20 @@ namespace SerranaLogCargas.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 var customers = await _customerService.FindAllAsync();
                 var cities = await _cityService.FindAllAsync();
                 var viewModel = new LoadSchedulingFormViewModel { Customer = customers, City = cities };
                 return View(viewModel);
+                
             }
-            if (id != loadScheduling.Id) 
+            if (id != loadScheduling.Id)
             {
-                return RedirectToAction(nameof(Error), new { message = "ID não fornecido" });
+                return RedirectToAction(nameof(Error), new
+                {
+                    message = "----- ID não fornecido  = ID: " + loadScheduling.Id.ToString()
+                });
+
             }
 
             try

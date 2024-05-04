@@ -96,13 +96,13 @@ namespace SerranaLogCargas.Controllers
                 return RedirectToAction(nameof(Error), new { message = "ID não fornecida" });
             }
 
-            var obj = await _vehicleService.FindByIdAsync(id.Value);
-            if (obj == null)
+            var vehicle = await _vehicleService.FindByIdAsync(id.Value);
+            if (vehicle == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "ID não encontrado" });
             }
             List<Driver> drivers = await _driverService.FindAllAsync();
-            VehicleFormViewModel viewModel = new VehicleFormViewModel { Vehicle = obj, Driver = drivers };
+            VehicleFormViewModel viewModel = new VehicleFormViewModel { Vehicle = vehicle, Driver = drivers };
             return View(viewModel);
         }
 

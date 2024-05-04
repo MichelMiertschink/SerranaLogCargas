@@ -14,8 +14,13 @@ namespace SerranaLogCargas.Services
         public async Task<List<Customer>> FindAllAsync()
         {
             return await _context.Customers.ToListAsync();
-            
         }
+
+        public List<Customer> FindAll()
+        {
+            return _context.Customers.ToList();
+        }
+
         public async Task InsertAsync(Customer obj)
         {
             _context.Add(obj);

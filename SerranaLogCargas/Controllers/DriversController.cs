@@ -3,13 +3,13 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using SerranaLogCargas.Models;
+using LogCargas.Models;
 using Microsoft.EntityFrameworkCore;
-using SerranaLogCargas.Data;
-using SerranaLogCargas.Models.ViewModels;
-using SerranaLogCargas.Services;
+using LogCargas.Data;
+using LogCargas.Models.ViewModels;
+using LogCargas.Services;
 
-namespace SerranaLogCargas.Controllers
+namespace LogCargas.Controllers
 {
     public class DriversController : Controller
     {
@@ -46,7 +46,7 @@ namespace SerranaLogCargas.Controllers
         // GET: Drivers/Create
         public async Task<IActionResult> Create()
         {
-            return RedirectToAction(nameof(Create));
+            return View();
         }
 
         // POST: Drivers/Create

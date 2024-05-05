@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SerranaLogCargas.Data;
-using SerranaLogCargas.Models;
-using SerranaLogCargas.Services.Exceptions;
+using LogCargas.Data;
+using LogCargas.Models;
+using LogCargas.Services.Exceptions;
 
-namespace SerranaLogCargas.Services
+namespace LogCargas.Services
 {
     public class CityService
     {
-        private readonly SerranaLogCargasContext _context;
-        public CityService(SerranaLogCargasContext context)
+        private readonly LogCargasContext _context;
+        public CityService(LogCargasContext context)
         {
             _context = context;
         }   
@@ -17,12 +17,7 @@ namespace SerranaLogCargas.Services
         {
             return await _context.Cities.Include(obj => obj.State).ToListAsync();
         }
-
-        public List<City> FindAll()
-        {
-            return _context.Cities.Include(obj => obj.State).ToList();
-        }
-
+               
         public async Task InsertAsync(City obj)
         {
             _context.Add(obj);
@@ -60,6 +55,5 @@ namespace SerranaLogCargas.Services
                 throw new DbConcurrencyException(e.Message);
             }
         }
-    
     }
 }

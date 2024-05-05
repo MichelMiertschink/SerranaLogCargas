@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using LogCargas.Models.Enums;
+using System.ComponentModel.DataAnnotations;
 
-namespace SerranaLogCargas.Models
+namespace LogCargas.Models
 {
     public class LoadScheduling
     {
@@ -32,18 +33,23 @@ namespace SerranaLogCargas.Models
         // Peso de descarga necessário
         public bool PD { get; set; }
 
-        
+        [Display(Name ="Tipo")]
+        public VehicleType VehicleType { get; set; }
 
-        // Vários campos com possíveis Enums
-        // G = indica se é F=frota, T=terceio A = Agregado
-        // C = R=Raster S=Skymark (gerenciadora de risco)
-        // CK = Se tem que fazer checklistp do monitoramento
-        // M = Monitorado (se for tem que ter CK)
+        [Display(Name ="Ger.Risco")]
+        public RiskManagement? RiskManagement { get; set; }
+
+        [Display(Name ="Monitorado")]
+        public bool? Monitoring { get; set; }
+
+        // se é monitorado tem que ter Check list
+        [Display(Name = "CkList")]
+        public bool? CheckList { get; set; }
 
         [Display(Name = "Peso")]
         public float Weigth { get; set; }
 
-        [Display(Name = "Tranpor")]
+        [Display(Name = "Transpor")]
         public float VlTranspor {  get; set; }
 
         [Display(Name = "Vl Contrato")]

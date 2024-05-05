@@ -1,4 +1,4 @@
-﻿namespace SerranaLogCargas.Services.Exceptions
+﻿namespace LogCargas.Services.Exceptions
 {
     public class NotFoundException : ApplicationException
     {

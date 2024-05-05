@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using SerranaLogCargas.Models;
-using SerranaLogCargas.Models.ViewModels;
-using SerranaLogCargas.Services;
+using LogCargas.Models;
+using LogCargas.Models.ViewModels;
+using LogCargas.Services;
 using System.Diagnostics;
 
-namespace SerranaLogCargas.Controllers
+namespace LogCargas.Controllers
 {
     public class LoadSchedulingController : Controller
     {
@@ -25,7 +25,7 @@ namespace SerranaLogCargas.Controllers
             var list = await _loadSchedulingService.FindAllAsync();
             return View(list);
         }
-
+        // GET: LoadScheduling/Create
         public async Task<IActionResult> Create()
         {
             try

@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SerranaLogCargas.Data;
-using SerranaLogCargas.Models;
-using SerranaLogCargas.Services.Exceptions;
+using LogCargas.Data;
+using LogCargas.Models;
+using LogCargas.Services.Exceptions;
 
-namespace SerranaLogCargas.Services
+namespace LogCargas.Services
 {
     public class LoadSchedulingService
     {
-        private readonly SerranaLogCargasContext _context;
-        public LoadSchedulingService (SerranaLogCargasContext context)
+        private readonly LogCargasContext _context;
+        public LoadSchedulingService (LogCargasContext context)
         {
             _context = context;
         }

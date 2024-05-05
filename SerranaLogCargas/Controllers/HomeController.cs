@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SerranaLogCargas.Models.ViewModels;
+using LogCargas.Models.ViewModels;
 using System.Diagnostics;
 
-namespace SerranaLogCargas.Controllers
+namespace LogCargas.Controllers
 {
     public class HomeController : Controller
     {

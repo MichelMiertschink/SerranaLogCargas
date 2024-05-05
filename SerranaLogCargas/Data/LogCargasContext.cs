@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SerranaLogCargas.Models;
+using LogCargas.Models;
 
-namespace SerranaLogCargas.Data
+namespace LogCargas.Data
 {
-    public class SerranaLogCargasContext : DbContext
+    public class LogCargasContext : DbContext
     {
-        public SerranaLogCargasContext (DbContextOptions<SerranaLogCargasContext> options)
+        public LogCargasContext (DbContextOptions<LogCargasContext> options)
             :base(options) 
         {
         }

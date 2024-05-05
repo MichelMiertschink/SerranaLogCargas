@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SerranaLogCargas.Data;
-using SerranaLogCargas.Models;
-using SerranaLogCargas.Services.Exceptions;
+using LogCargas.Data;
+using LogCargas.Models;
+using LogCargas.Services.Exceptions;
 
-namespace SerranaLogCargas.Services
+namespace LogCargas.Services
 {
     public class VehicleService
     {
-        private readonly SerranaLogCargasContext _context;
-        public VehicleService (SerranaLogCargasContext context)
+        private readonly LogCargasContext _context;
+        public VehicleService (LogCargasContext context)
         {
             _context = context;
         }

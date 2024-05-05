@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SerranaLogCargas.Models;
-using SerranaLogCargas.Models.ViewModels;
-using SerranaLogCargas.Services;
+using LogCargas.Models;
+using LogCargas.Models.ViewModels;
+using LogCargas.Services;
 using System.Diagnostics;
 
-namespace SerranaLogCargas.Controllers
+namespace LogCargas.Controllers
 {
     public class CitiesController : Controller
     {
@@ -88,7 +88,7 @@ namespace SerranaLogCargas.Controllers
 
             return View(obj);
         }
-
+        // GET: Cities/Edit
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)

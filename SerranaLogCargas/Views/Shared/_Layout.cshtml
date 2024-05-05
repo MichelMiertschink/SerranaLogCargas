@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SerranaLog Cargas</title>
+    <title>@ViewData["Title"] - Log Cargas</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-Darkly.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/SerranaLogCargas.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/LogCargas.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
@@ -29,6 +29,9 @@
                                 <a class="dropdown-item" asp-area="" asp-controller="Vehicles" asp-action="Index">Veículos</a>
                                 <a class="dropdown-item" asp-area="" asp-controller="Drivers" asp-action="Index">Motoristas</a>
                             </div>
+                        @* <li class="nav-item">
+                            <a class="nav-link" asp-controller="Config"><i>TESTE</i>Config</a>
+                        </li> *@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="LoadScheduling">Cargas</a>

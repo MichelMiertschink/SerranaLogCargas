@@ -1,12 +1,12 @@
-﻿using SerranaLogCargas.Models;
+﻿using LogCargas.Models;
 
-namespace SerranaLogCargas.Data
+namespace LogCargas.Data
 {
     public class SeedingService
     {
-        private SerranaLogCargasContext _context;
+        private LogCargasContext _context;
 
-        public SeedingService(SerranaLogCargasContext context)
+        public SeedingService(LogCargasContext context)
         {
             _context = context; 
         }

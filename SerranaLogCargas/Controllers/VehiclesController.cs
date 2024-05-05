@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SerranaLogCargas.Models;
-using SerranaLogCargas.Models.ViewModels;
-using SerranaLogCargas.Services;
+using LogCargas.Models;
+using LogCargas.Models.ViewModels;
+using LogCargas.Services;
 using System.Diagnostics;
 
-namespace SerranaLogCargas.Controllers
+namespace LogCargas.Controllers
 {
     public class VehiclesController : Controller
     {

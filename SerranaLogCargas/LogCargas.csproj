@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-SerranaLogCargas-cdcc3a2b-98bd-4bf9-b414-3b445f05277e</UserSecretsId>
+    <UserSecretsId>aspnet-LogCargas-cdcc3a2b-98bd-4bf9-b414-3b445f05277e</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,6 +24,10 @@
 
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\icons\admin_panel_settings.png" />
   </ItemGroup>
 
 </Project>

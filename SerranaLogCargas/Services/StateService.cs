@@ -1,13 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SerranaLogCargas.Data;
-using SerranaLogCargas.Models;
+using LogCargas.Data;
+using LogCargas.Models;
+using LogCargas.Services.Exceptions;
 
-namespace SerranaLogCargas.Services
+namespace LogCargas.Services
 {
     public class StateService
     {
-        private readonly SerranaLogCargasContext _context;
-        public StateService(SerranaLogCargasContext context)
+        private readonly LogCargasContext _context;
+        public StateService(LogCargasContext context)
         {
             _context = context;
         }
@@ -16,6 +17,46 @@ namespace SerranaLogCargas.Services
         {
             return await _context.States.OrderBy(x => x.Name).ToListAsync();
         }
-       
+
+        public async Task InsertAsync(State state)
+        {
+            _context.Add(state);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<State> FindByIdAsync (int id)
+        {
+            return await _context.States.FirstOrDefaultAsync(state => state.Id == id);
+        }
+
+        public async Task Remove (int id)
+        {
+            try
+            {
+                var state = _context.States.Find(id);
+                _context.States.Remove(state);
+                await _context.SaveChangesAsync();
+            }catch (IntegrityException e)
+            {
+                throw new DbConcurrencyException ("Não é possível excluir, pois o Estado possui cidade cadastrada") ;
+            }
+        }
+
+        public async Task UpdateAsync(State state)
+        {
+            bool hasAny = await _context.States.AnyAsync(x => x.Id == state.Id);
+            if (!hasAny){
+                throw new NotFoundException("Id não encontrada");
+            }
+
+            try
+            {
+                _context.Update(state);
+                await _context.SaveChangesAsync();
+            }catch (DbConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
+            }
+        }
     }
 }

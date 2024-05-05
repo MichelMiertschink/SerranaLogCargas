@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SerranaLogCargas", "SerranaLogCargas\SerranaLogCargas.csproj", "{0D7527B8-85C5-410C-AC63-74F0991AA21E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogCargas", "SerranaLogCargas\LogCargas.csproj", "{0D7527B8-85C5-410C-AC63-74F0991AA21E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

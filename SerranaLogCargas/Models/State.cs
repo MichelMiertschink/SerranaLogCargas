@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 
-namespace SerranaLogCargas.Models
+namespace LogCargas.Models
 {
     public class State
     {

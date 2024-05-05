@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SerranaLogCargas.Models.LoadScheduling>
+﻿@model IEnumerable<LogCargas.Models.LoadScheduling>
 
 @{
     ViewData["Title"] = "Carregamentos";
@@ -25,6 +25,21 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UnloadDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RiskManagement)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Monitoring)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckList)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Weigth)
@@ -68,6 +83,21 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.UnloadDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RiskManagement)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Monitoring)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckList)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Weigth)

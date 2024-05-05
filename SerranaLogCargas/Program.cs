@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using SerranaLogCargas.Data;
-using SerranaLogCargas.Services;
+using LogCargas.Data;
+using LogCargas.Services;
 
-namespace SerranaLogCargas
+namespace LogCargas
 {
     public class Program
     {
@@ -13,9 +13,9 @@ namespace SerranaLogCargas
 
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-            builder.Services.AddDbContext<SerranaLogCargasContext>(options =>
+            builder.Services.AddDbContext<LogCargasContext>(options =>
                 options.UseMySql(
-                    "server=localhost; initial catalog=SERRANALOGCARGAS; uid=root; pwd=root",
+                    "server=localhost; initial catalog=LOGCARGAS; uid=root; pwd=root",
                     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.25-mysql")));
 
             // Registrando injeção de dependencia para os serviços
@@ -37,7 +37,7 @@ namespace SerranaLogCargas
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<SerranaLogCargasContext>();
+                .AddEntityFrameworkStores<LogCargasContext>();
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
             var app = builder.Build();

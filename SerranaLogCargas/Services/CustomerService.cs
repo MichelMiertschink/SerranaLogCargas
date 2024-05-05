@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SerranaLogCargas.Data;
-using SerranaLogCargas.Models;
+using LogCargas.Data;
+using LogCargas.Models;
 
-namespace SerranaLogCargas.Services
+namespace LogCargas.Services
 {
     public class CustomerService
     {
-        private readonly SerranaLogCargasContext _context;
-        public CustomerService(SerranaLogCargasContext context)
+        private readonly LogCargasContext _context;
+        public CustomerService(LogCargasContext context)
         {
             _context = context;
         }

@@ -1,4 +1,4 @@
-﻿namespace SerranaLogCargas.Models.ViewModels
+﻿namespace LogCargas.Models.ViewModels
 {
     public class DriverFormViewModel
     {

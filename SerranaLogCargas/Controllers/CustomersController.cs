@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SerranaLogCargas.Data;
-using SerranaLogCargas.Models;
+using LogCargas.Data;
+using LogCargas.Models;
 
-namespace SerranaLogCargas.Controllers
+namespace LogCargas.Controllers
 {
     public class CustomersController : Controller
     {
-        private readonly SerranaLogCargasContext _context;
+        private readonly LogCargasContext _context;
 
-        public CustomersController(SerranaLogCargasContext context)
+        public CustomersController(LogCargasContext context)
         {
             _context = context;
         }
@@ -24,7 +24,7 @@ namespace SerranaLogCargas.Controllers
         {
               return _context.Customers != null ? 
                           View(await _context.Customers.ToListAsync()) :
-                          Problem("Entity set 'SerranaLogCargasContext.Customers'  is null.");
+                          Problem("Entity set 'LogCargasContext.Customers'  is null.");
         }
 
         // GET: Customers/Details/5
@@ -143,7 +143,7 @@ namespace SerranaLogCargas.Controllers
         {
             if (_context.Customers == null)
             {
-                return Problem("Entity set 'SerranaLogCargasContext.Customers'  is null.");
+                return Problem("Entity set 'LogCargasContext.Customers'  is null.");
             }
             var customer = await _context.Customers.FindAsync(id);
             if (customer != null)

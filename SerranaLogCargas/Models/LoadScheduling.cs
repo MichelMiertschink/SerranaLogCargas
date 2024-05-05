@@ -16,62 +16,69 @@ namespace LogCargas.Models
 
         [Display(Name = "Cliente")]
         public Customer Customer { get; set; }
+        [Display(Name = "Cliente")]
         public int CustomerId { get; set; }
 
         [Display(Name = "Origem")]
         public City CityOrigin { get; set; }
+        [Display(Name = "Origem")]
         public int CityOriginId { get; set; }
-        
+
         [Display(Name = "Destino")]
         public City CityDestiny { get; set; }
+        [Display(Name = "Destino")]
         public int CityDestinyId { get; set; }
 
-        [Display(Name = "Dt. Desc.")]
+        [Display(Name = "Dt.Descarga")]
         [DataType(DataType.Date)]
         public DateTime UnloadDate { get; set; }
         [Display(Name ="PD")]
         // Peso de descarga necessário
         public bool PD { get; set; }
 
-        [Display(Name ="Tipo")]
+        [Display(Name ="T")]
         public VehicleType VehicleType { get; set; }
 
-        [Display(Name ="Ger.Risco")]
+        [Display(Name ="G")]
         public RiskManagement? RiskManagement { get; set; }
 
-        [Display(Name ="Monitorado")]
-        public bool? Monitoring { get; set; }
+        [Display(Name ="M")]
+        public bool Monitoring { get; set; }
 
         // se é monitorado tem que ter Check list
-        [Display(Name = "CkList")]
-        public bool? CheckList { get; set; }
+        [Display(Name = "C")]
+        public bool CheckList { get; set; }
 
         [Display(Name = "Peso")]
+        [DisplayFormat(DataFormatString = "{0,2}")]
         public float Weigth { get; set; }
 
-        [Display(Name = "Transpor")]
+        [Display(Name = "Vl.Transp")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public float VlTranspor {  get; set; }
 
-        [Display(Name = "Vl Contrato")]
+        [Display(Name = "Vl.Contr.")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public float VlContract {  get; set; }
 
-        [Display(Name = "Vl Adiant.")]
+        [Display(Name = "Vl.Adiant.")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public float Vladvance {  get; set; }
 
         [Display(Name = "R$")]
         public bool Pay {  get; set; }
 
-        [Display(Name = "Contrato")]
+        [Display(Name = "Nr.Contr")]
         public int ContractId { get; set; }
 
-        [Display(Name = "CT-e")]
+        [Display(Name = "CTe")]
         public bool Cte {  get; set; }
 
         public LoadScheduling ()
         {
         }
 
-        public LoadScheduling(int id, DateTime includeDate, bool bol, Customer customer, City cityOrigin, City cityDestiny, DateTime unloadDate, bool pD, float weigth, float vlTranspor, float vlContract, float vladvance, bool pay, int contractId, bool cte)
+        public LoadScheduling(int id, DateTime includeDate, bool bol, Customer customer, City cityOrigin, City cityDestiny, DateTime unloadDate, bool pD, VehicleType vehicleType, RiskManagement? riskManagement, bool monitoring, bool checkList, float weigth, float vlTranspor, float vlContract, float vladvance, bool pay, int contractId, bool cte)
         {
             Id = id;
             IncludeDate = includeDate;
@@ -81,6 +88,10 @@ namespace LogCargas.Models
             CityDestiny = cityDestiny;
             UnloadDate = unloadDate;
             PD = pD;
+            VehicleType = vehicleType;
+            RiskManagement = riskManagement;
+            Monitoring = monitoring;
+            CheckList = checkList;
             Weigth = weigth;
             VlTranspor = vlTranspor;
             VlContract = vlContract;

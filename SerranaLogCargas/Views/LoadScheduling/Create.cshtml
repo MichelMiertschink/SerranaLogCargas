@@ -23,25 +23,73 @@
                     <option disabled selected>Selecionar...</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label asp-for="LoadScheduling.CityOriginId" class="control-label"></label>
-                <select asp-for="LoadScheduling.CityOriginId" asp-items="@(new SelectList(Model.City, "Id", "Name"))" class="form-control">
-                    <option disabled selected>Selecionar...</option>
-                </select>
-                <span asp-validation-for="LoadScheduling.CityOriginId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LoadScheduling.CityDestinyId" class="control-label"></label>
-                <select asp-for="LoadScheduling.CityDestinyId" asp-items="@(new SelectList(Model.City, "Id", "Name"))" class="form-control">
-                    <option disabled selected>Selecionar...</option>
-                </select>
-                <span asp-validation-for="LoadScheduling.CityDestinyId" class="text-danger"></span>
-            </div>
+           <table>
+               <tr>
+                   <td>
+                        <div class="form-group">
+                            <label asp-for="LoadScheduling.CityOriginId" class="control-label"></label>
+                            <select asp-for="LoadScheduling.CityOriginId" asp-items="@(new SelectList(Model.City, "Id", "Name"))" class="form-control">
+                                <option disabled selected>Selecionar...</option>
+                            </select>
+                            <span asp-validation-for="LoadScheduling.CityOriginId" class="text-danger"></span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label asp-for="LoadScheduling.CityDestinyId" class="control-label"></label>
+                            <select asp-for="LoadScheduling.CityDestinyId" asp-items="@(new SelectList(Model.City, "Id", "Name"))" class="form-control">
+                                <option disabled selected>Selecionar...</option>
+                            </select>
+                            <span asp-validation-for="LoadScheduling.CityDestinyId" class="text-danger"></span>
+                        </div>
+                    </td>
+               </tr>
+           </table>
             <div class="form-group">
                 <label asp-for="LoadScheduling.UnloadDate" class="control-label"></label>
                 <input asp-for="LoadScheduling.UnloadDate" class="form-control" />
                 <span asp-validation-for="LoadScheduling.UnloadDate" class="text-danger"></span>
             </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="LoadScheduling.PD" /> @Html.DisplayNameFor(model => model.LoadScheduling.PD)
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LoadScheduling.VehicleType" class="control-label"></label>
+                <select asp-for="LoadScheduling.VehicleType" asp-items="Html.GetEnumSelectList<LogCargas.Models.Enums.VehicleType>()" class="form-control">
+                    <option disabled selected>Selecionar...</option>
+                </select>
+                <span asp-validation-for="LoadScheduling.VehicleType" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LoadScheduling.RiskManagement" class="control-label"></label>
+                <select asp-for="LoadScheduling.RiskManagement" asp-items="Html.GetEnumSelectList<LogCargas.Models.Enums.RiskManagement>()" class="form-control">
+                    <option disabled selected>Selecionar...</option>
+                </select>
+                <span asp-validation-for="LoadScheduling.RiskManagement" class="text-danger"></span>
+            </div>
+            <table>
+                <tr>
+                    <td>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="LoadScheduling.Monitoring"/> @Html.DisplayNameFor(model => model.LoadScheduling.Monitoring)
+                            </label>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="LoadScheduling.CheckList" /> @Html.DisplayNameFor(model => model.LoadScheduling.CheckList)
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+            </table>
             <div class="form-group">
                 <label asp-for="LoadScheduling.Weigth" class="control-label"></label>
                 <input asp-for="LoadScheduling.Weigth" class="form-control" />

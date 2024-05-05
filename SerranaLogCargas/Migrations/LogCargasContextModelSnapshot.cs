@@ -97,7 +97,7 @@ namespace LogCargas.Migrations
                     b.Property<bool>("Bol")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<bool?>("CheckList")
+                    b.Property<bool>("CheckList")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<int>("CityDestinyId")
@@ -118,7 +118,7 @@ namespace LogCargas.Migrations
                     b.Property<DateTime>("IncludeDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<bool?>("Monitoring")
+                    b.Property<bool>("Monitoring")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<bool>("PD")

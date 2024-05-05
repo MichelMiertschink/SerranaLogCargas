@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LogCargas.Migrations
 {
     [DbContext(typeof(LogCargasContext))]
-    [Migration("20240505004549_Initial")]
+    [Migration("20240505222953_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -99,6 +99,9 @@ namespace LogCargas.Migrations
                     b.Property<bool>("Bol")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<bool>("CheckList")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int>("CityDestinyId")
                         .HasColumnType("int");
 
@@ -117,14 +120,23 @@ namespace LogCargas.Migrations
                     b.Property<DateTime>("IncludeDate")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<bool>("Monitoring")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<bool>("PD")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<bool>("Pay")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<int?>("RiskManagement")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("UnloadDate")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<int>("VehicleType")
+                        .HasColumnType("int");
 
                     b.Property<float>("VlContract")
                         .HasColumnType("float");

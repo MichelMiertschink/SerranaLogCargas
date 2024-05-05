@@ -4,8 +4,9 @@ namespace LogCargas.Models.Enums
 {
     public enum RiskManagement : int
     {
-        Raster = 1,
-        Skymark = 2,
-        Outra = 3
+        N = 1,
+        R = 2,
+        S = 3,
+        O = 4
     }
 }

@@ -68,7 +68,7 @@ namespace LogCargas.Models
         [Display(Name = "R$")]
         public bool Pay {  get; set; }
 
-        [Display(Name = "Nr.Contr")]
+        [Display(Name = "Contr")]
         public int ContractId { get; set; }
 
         [Display(Name = "CTe")]

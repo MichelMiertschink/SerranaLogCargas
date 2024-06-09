@@ -21,6 +21,36 @@ namespace LogCargas.Services
                 .Include(customerId => customerId.Customer)
                 .ToListAsync();
         }
+        // Filtro pela data de inclusão
+        public async Task<List<LoadScheduling>> FindByDateAsync(DateTime? minDate, DateTime? maxDate)
+        {
+            var result = from obj in _context.LoadScheduling select obj;
+            if (minDate.HasValue)
+            {
+                result = result.Where(x => x.IncludeDate >= minDate.Value);
+            }
+
+            if (maxDate.HasValue)
+            {
+                result = result.Where(x => x.IncludeDate <= maxDate.Value);
+            }
+
+            return await result
+                .Include(cityDestiny => cityDestiny.CityDestiny)
+                .Include(cityOrigin => cityOrigin.CityOrigin)
+                .Include(customerId => customerId.Customer)
+                .ToListAsync();
+        }
+
+        // teste da ordenação.
+        public async Task<List<LoadScheduling>> FindAllOrderCustomerAsync()
+        {
+            return await _context.LoadScheduling
+                .Include(cityDestiny => cityDestiny.CityDestiny)
+                .Include(cityOrigin => cityOrigin.CityOrigin)
+                .Include(customerId => customerId.Customer)
+                .OrderBy(x => x.Customer).ToListAsync();
+        }
 
         public async Task InsertAsync(LoadScheduling loadScheduling)
         {

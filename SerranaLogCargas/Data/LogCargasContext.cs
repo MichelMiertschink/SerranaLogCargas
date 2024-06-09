@@ -16,5 +16,6 @@ namespace LogCargas.Data
         public DbSet<Vehicle> Vehicles { get; set; } = default!;
         public DbSet<LoadScheduling> LoadScheduling { get; set; } = default!;
         
+        // public DbSet<IdentityUser> IdentityUser { get; set; } = default!;
     }
 }

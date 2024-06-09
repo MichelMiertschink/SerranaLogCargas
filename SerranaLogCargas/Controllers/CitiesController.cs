@@ -15,12 +15,15 @@ namespace LogCargas.Controllers
             _cityService = cityService;
             _stateService = stateService;
         }
+        
+        // GET: Cities
         public async Task<IActionResult> Index()
         {
             var list = await _cityService.FindAllAsync();
             return View(list);
         }
 
+        // GET: Cities/Create
         public async Task<IActionResult> Create()
         {
             var states = await _stateService.FindAllAsync();
@@ -28,6 +31,7 @@ namespace LogCargas.Controllers
             return View(viewModel);
         }
 
+        // POST: Cities/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create (City city)
@@ -42,6 +46,7 @@ namespace LogCargas.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // GET: Cities/Delete
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -49,15 +54,16 @@ namespace LogCargas.Controllers
                 return RedirectToAction(nameof(Error), new { message = "ID não fornecido" });
             }
 
-            var obj = await _cityService.FindByIdAsync(id.Value);
-            if (obj == null)
+            var city = await _cityService.FindByIdAsync(id.Value);
+            if (city == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "ID não encontrado" });
             }
             
-            return View(obj);
+            return View(city);
         }
 
+        // POST: Cities/Delete
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
@@ -69,10 +75,11 @@ namespace LogCargas.Controllers
             } 
             catch (Exception e) 
             {
-                return RedirectToAction(nameof(Error), new { message = e.Message });
+                return RedirectToAction(nameof(Error), new { message = "Não é possível excluir, pois  a cidade possui CARGA cadastrada." });
             }
         }
-
+        
+        // GET: Cities/Details
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -106,6 +113,7 @@ namespace LogCargas.Controllers
             return View(viewModel);
         }
 
+        // POST: Cities/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit (int id, City city )

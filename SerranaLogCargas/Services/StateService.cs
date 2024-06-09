@@ -36,9 +36,10 @@ namespace LogCargas.Services
                 var state = _context.States.Find(id);
                 _context.States.Remove(state);
                 await _context.SaveChangesAsync();
-            }catch (IntegrityException e)
+            }
+            catch (IntegrityException e)
             {
-                throw new DbConcurrencyException ("Não é possível excluir, pois o Estado possui cidade cadastrada") ;
+                throw new DbConcurrencyException (e.Message);
             }
         }
 

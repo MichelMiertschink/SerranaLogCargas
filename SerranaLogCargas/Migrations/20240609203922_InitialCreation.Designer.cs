@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LogCargas.Migrations
 {
     [DbContext(typeof(LogCargasContext))]
-    [Migration("20240505222953_Initial")]
-    partial class Initial
+    [Migration("20240609203922_InitialCreation")]
+    partial class InitialCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -131,6 +131,9 @@ namespace LogCargas.Migrations
 
                     b.Property<int?>("RiskManagement")
                         .HasColumnType("int");
+
+                    b.Property<bool?>("Unload")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime>("UnloadDate")
                         .HasColumnType("datetime(6)");

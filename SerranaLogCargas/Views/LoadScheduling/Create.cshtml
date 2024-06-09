@@ -11,6 +11,11 @@
     <div class="col-md-6">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LoadScheduling.IncludeDate" class="control-label"></label>
+                <input asp-for="LoadScheduling.IncludeDate" class="form-control"/>
+                <span asp-validation-for="LoadScheduling.IncludeDate" class="text-danger"></span>
+            </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="LoadScheduling.Bol" /> @Html.DisplayNameFor(model => model.LoadScheduling.Bol)

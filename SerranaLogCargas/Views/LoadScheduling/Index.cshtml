@@ -8,6 +8,26 @@
 <p>
     <a asp-action="Create" class="btn btn-primary">Novo</a>
 </p>
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Filtro</a>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <form class="d-flex">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <input type="date" class="form-control me-sm-2" name="minDate" value=@ViewData["minDate"] />
+                    </li>
+                    <li class="nav-item">
+                        <input type="date" class="form-control me-sm-2" name="maxDate" value=@ViewData["maxDate"] />
+                    </li>
+                    <li>
+                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Filtrar</button>
+                    </li>
+                    </ul>
+            </form>
+        </div>
+    </div>
+</nav>
 <table class="table table-striped table-hover table-bordered shadow">
     <thead>
         <tr class="table-active">

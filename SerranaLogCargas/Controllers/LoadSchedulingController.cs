@@ -25,6 +25,23 @@ namespace LogCargas.Controllers
             var list = await _loadSchedulingService.FindAllAsync();
             return View(list);
         }
+
+        public async Task<IActionResult> SimpleSearch(DateTime? minDate, DateTime? maxDate)
+        {
+            if (!minDate.HasValue)
+            {
+                minDate = new DateTime(DateTime.Now.Year, 1, 1);
+            }
+            if (!maxDate.HasValue)
+            {
+                maxDate = DateTime.Now;
+            }
+            ViewData["minDate"] = minDate.Value.ToString("dd-MM-yyyy");
+            ViewData["maxDate"] = minDate.Value.ToString("dd-MM-yyyy");
+            var result = await _loadSchedulingService.FindByDateAsync(minDate, maxDate);
+            return View(result);
+        }
+
         // GET: LoadScheduling/Create
         public async Task<IActionResult> Create()
         {
@@ -32,12 +49,12 @@ namespace LogCargas.Controllers
             {
                 var customers = await _customerService.FindAllAsync();
                 var cities = await _cityService.FindAllAsync();
-                var viewModel = new LoadSchedulingFormViewModel { Customer = customers, City = cities };
+                var viewModel = new LoadSchedulingFormViewModel { Customer = customers, City = cities};
                 return View(viewModel);
             }
             catch (Exception e)
             {
-                return RedirectToAction(nameof(Error), new { message = e.Message });
+                return RedirectToAction(nameof(Error), new { message = e.Message});
             }
 
         }
@@ -56,6 +73,7 @@ namespace LogCargas.Controllers
 
             try
             {
+                loadScheduling.IncludeDate = DateTime.Now;
                 await _loadSchedulingService.InsertAsync(loadScheduling);
                 return RedirectToAction(nameof(Index));
             }

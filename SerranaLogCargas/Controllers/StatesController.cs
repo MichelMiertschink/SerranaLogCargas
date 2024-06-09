@@ -1,8 +1,8 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using LogCargas.Models;
 using LogCargas.Models.ViewModels;
 using LogCargas.Services;
+using System.Diagnostics;
 
 namespace LogCargas.Controllers
 {
@@ -55,9 +55,9 @@ namespace LogCargas.Controllers
         }
 
         // POST: States/Delete
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
@@ -66,9 +66,7 @@ namespace LogCargas.Controllers
             }
             catch (Exception e)
             {
-                return RedirectToAction(nameof(Error), new { message = "Existe cidade cadastrada para o estado. " +
-                    "\nNão é possível excluir."
-                });
+                return RedirectToAction(nameof(Error), new { message = "Existe cidade cadastrada para o estado. Não é possível excluir."});
             }
         }
 

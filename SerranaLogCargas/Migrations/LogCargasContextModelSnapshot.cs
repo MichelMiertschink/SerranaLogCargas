@@ -130,6 +130,9 @@ namespace LogCargas.Migrations
                     b.Property<int?>("RiskManagement")
                         .HasColumnType("int");
 
+                    b.Property<bool?>("Unload")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<DateTime>("UnloadDate")
                         .HasColumnType("datetime(6)");
 

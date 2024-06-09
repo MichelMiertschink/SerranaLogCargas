@@ -13,7 +13,7 @@
         <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LogCargas</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarColor01">
@@ -28,10 +28,9 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" asp-area="" asp-controller="Vehicles" asp-action="Index">Veículos</a>
                                 <a class="dropdown-item" asp-area="" asp-controller="Drivers" asp-action="Index">Motoristas</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Settings" asp-action="Index"><i>Importações</i></a>
                             </div>
-                        @* <li class="nav-item">
-                            <a class="nav-link" asp-controller="Config"><i>TESTE</i>Config</a>
-                        </li> *@
+                            
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="LoadScheduling">Cargas</a>

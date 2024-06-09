@@ -2,8 +2,8 @@
 {
     public enum VehicleType : int
     {
-        Frota = 1, 
-        Terceiros = 2,
-        Agregado = 3
+        F/*rota*/ = 1, 
+        T/*erceiros*/ = 2,
+        A/*gregado*/ = 3
     }
 }

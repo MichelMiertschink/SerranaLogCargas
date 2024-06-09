@@ -11,6 +11,9 @@ namespace LogCargas.Models
         [DataType(DataType.DateTime)]
         public DateTime IncludeDate { get; set; }
 
+        [Display(Name ="Entregue")]
+        public bool? Unload { get; set; }
+
         [Display(Name = "BOL")]
         public bool Bol {  get; set; }
 
@@ -78,10 +81,11 @@ namespace LogCargas.Models
         {
         }
 
-        public LoadScheduling(int id, DateTime includeDate, bool bol, Customer customer, City cityOrigin, City cityDestiny, DateTime unloadDate, bool pD, VehicleType vehicleType, RiskManagement? riskManagement, bool monitoring, bool checkList, float weigth, float vlTranspor, float vlContract, float vladvance, bool pay, int contractId, bool cte)
+        public LoadScheduling(int id, DateTime includeDate, bool? unload, bool bol, Customer customer, City cityOrigin, City cityDestiny, DateTime unloadDate, bool pD, VehicleType vehicleType, RiskManagement? riskManagement, bool monitoring, bool checkList, float weigth, float vlTranspor, float vlContract, float vladvance, bool pay, int contractId, bool cte)
         {
             Id = id;
             IncludeDate = includeDate;
+            Unload = unload;
             Bol = bol;
             Customer = customer;
             CityOrigin = cityOrigin;

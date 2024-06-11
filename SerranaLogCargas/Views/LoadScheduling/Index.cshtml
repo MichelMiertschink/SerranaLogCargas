@@ -12,18 +12,18 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Filtro</a>
         <div class="collapse navbar-collapse" id="navbarColor01">
-            <form class="d-flex">
+            <form class="d-flex" asp-action="SimpleSearch">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <input type="date" class="form-control me-sm-2" name="minDate" value=@ViewData["minDate"] />
+                        <input type="date" class="form-control" name="minDate"/>
                     </li>
                     <li class="nav-item">
-                        <input type="date" class="form-control me-sm-2" name="maxDate" value=@ViewData["maxDate"] />
+                        <input type="date" class="form-control" name="maxDate"/>
                     </li>
                     <li>
-                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Filtrar</button>
+                        <button class="btn btn-secondary" type="submit">Filtrar</button>
                     </li>
-                    </ul>
+                </ul>
             </form>
         </div>
     </div>

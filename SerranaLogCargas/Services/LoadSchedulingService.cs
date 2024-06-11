@@ -27,12 +27,12 @@ namespace LogCargas.Services
             var result = from obj in _context.LoadScheduling select obj;
             if (minDate.HasValue)
             {
-                result = result.Where(x => x.IncludeDate >= minDate.Value);
+                result = result.Where(x => x.IncludeDate.Date >= minDate.Value);
             }
 
             if (maxDate.HasValue)
             {
-                result = result.Where(x => x.IncludeDate <= maxDate.Value);
+                result = result.Where(x => x.IncludeDate.Date <= maxDate.Value);
             }
 
             return await result
@@ -54,6 +54,8 @@ namespace LogCargas.Services
 
         public async Task InsertAsync(LoadScheduling loadScheduling)
         {
+
+            loadScheduling.IncludeDate = DateTime.Now;
             _context.Add(loadScheduling);
             await _context.SaveChangesAsync();
         }

@@ -53,7 +53,7 @@ namespace LogCargas.Models
         public bool CheckList { get; set; }
 
         [Display(Name = "Peso")]
-        [DisplayFormat(DataFormatString = "{0,2}")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
         public float Weigth { get; set; }
 
         [Display(Name = "Vl.Transp")]
@@ -71,7 +71,7 @@ namespace LogCargas.Models
         [Display(Name = "R$")]
         public bool Pay {  get; set; }
 
-        [Display(Name = "Contr")]
+        [Display(Name = "Contrato")]
         public int ContractId { get; set; }
 
         [Display(Name = "CTe")]

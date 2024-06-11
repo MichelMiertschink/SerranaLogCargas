@@ -30,11 +30,11 @@ namespace LogCargas.Controllers
         {
             if (!minDate.HasValue)
             {
-                minDate = new DateTime(DateTime.Now.Year, 1, 1);
+                minDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             }
             if (!maxDate.HasValue)
             {
-                maxDate = DateTime.Now;
+                maxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 10);
             }
             ViewData["minDate"] = minDate.Value.ToString("dd-MM-yyyy");
             ViewData["maxDate"] = minDate.Value.ToString("dd-MM-yyyy");

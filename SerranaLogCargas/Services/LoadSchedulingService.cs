@@ -8,7 +8,7 @@ namespace LogCargas.Services
     public class LoadSchedulingService
     {
         private readonly LogCargasContext _context;
-        public LoadSchedulingService (LogCargasContext context)
+        public LoadSchedulingService(LogCargasContext context)
         {
             _context = context;
         }
@@ -19,6 +19,7 @@ namespace LogCargas.Services
                 .Include(cityDestiny => cityDestiny.CityDestiny)
                 .Include(cityOrigin => cityOrigin.CityOrigin)
                 .Include(customerId => customerId.Customer)
+                .Include(driverId => driverId.Driver)
                 .ToListAsync();
         }
         // Filtro pela data de inclusão
@@ -39,6 +40,7 @@ namespace LogCargas.Services
                 .Include(cityDestiny => cityDestiny.CityDestiny)
                 .Include(cityOrigin => cityOrigin.CityOrigin)
                 .Include(customerId => customerId.Customer)
+                .Include(driverId => driverId.Driver)
                 .ToListAsync();
         }
 
@@ -49,6 +51,7 @@ namespace LogCargas.Services
                 .Include(cityDestiny => cityDestiny.CityDestiny)
                 .Include(cityOrigin => cityOrigin.CityOrigin)
                 .Include(customerId => customerId.Customer)
+                .Include(driverId => driverId.Driver)
                 .OrderBy(x => x.Customer).ToListAsync();
         }
 
@@ -66,6 +69,7 @@ namespace LogCargas.Services
                 .Include(obj => obj.CityOrigin)
                 .Include(obj => obj.CityDestiny)
                 .Include(obj => obj.Customer)
+                .Include(obj => obj.Driver)
                 .FirstOrDefaultAsync(obj => obj.Id == id);
         }
 
@@ -77,7 +81,7 @@ namespace LogCargas.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync (LoadScheduling loadScheduling)
+        public async Task UpdateAsync(LoadScheduling loadScheduling)
         {
             bool hasAny = await _context.LoadScheduling.AnyAsync(x => x.Id == loadScheduling.Id);
             if (!hasAny)
@@ -89,7 +93,8 @@ namespace LogCargas.Services
             {
                 _context.Update(loadScheduling);
                 await _context.SaveChangesAsync();
-            } catch (DbConcurrencyException e)
+            }
+            catch (DbConcurrencyException e)
             {
                 throw new DbConcurrencyException(e.Message);
             }

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LogCargas.Migrations
 {
     [DbContext(typeof(LogCargasContext))]
-    [Migration("20240609203922_InitialCreation")]
+    [Migration("20240612225510_InitialCreation")]
     partial class InitialCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -117,6 +117,9 @@ namespace LogCargas.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
+                    b.Property<int>("DriverId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("IncludeDate")
                         .HasColumnType("datetime(6)");
 
@@ -131,9 +134,6 @@ namespace LogCargas.Migrations
 
                     b.Property<int?>("RiskManagement")
                         .HasColumnType("int");
-
-                    b.Property<bool?>("Unload")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime>("UnloadDate")
                         .HasColumnType("datetime(6)");
@@ -160,6 +160,8 @@ namespace LogCargas.Migrations
                     b.HasIndex("CityOriginId");
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("DriverId");
 
                     b.ToTable("LoadScheduling");
                 });
@@ -240,11 +242,19 @@ namespace LogCargas.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("LogCargas.Models.Driver", "Driver")
+                        .WithMany()
+                        .HasForeignKey("DriverId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("CityDestiny");
 
                     b.Navigation("CityOrigin");
 
                     b.Navigation("Customer");
+
+                    b.Navigation("Driver");
                 });
 
             modelBuilder.Entity("LogCargas.Models.Vehicle", b =>

@@ -55,19 +55,15 @@
                     </td>
                     <td>
                         <div class="form-group">
-                            <label asp-for="LoadScheduling.Weigth" class="control-label"></label>
-                            <input asp-for="LoadScheduling.Weigth" class="form-control" />
-                            <span asp-validation-for="LoadScheduling.Weigth" class="text-danger"></span>
+                            <label asp-for="LoadScheduling.DriverId" class="control-label"></label>
+                            <select asp-for="LoadScheduling.DriverId" asp-items="@(new SelectList(Model.Driver, "Id", "Name"))" class="form-control">
+                                <option disabled selected>Selecionar...</option>
+                            </select>
+                            <span asp-validation-for="LoadScheduling.DriverId" class="text-danger"></span>
                         </div>
                     </td>
                 </tr>
             </table>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    Peso de descarga (PD)
-                    <input class="form-check-input" asp-for="LoadScheduling.PD" /> @* @Html.DisplayNameFor(model => model.LoadScheduling.PD) *@
-                </label>
-            </div>
             <table class="col-md-12">
                 <tr>
                     <td>
@@ -88,10 +84,8 @@
                             <span asp-validation-for="LoadScheduling.RiskManagement" class="text-danger"></span>
                         </div>
                     </td>
-                </tr>
             </table>
-            <table>
-                <tr>
+            <table class="col-md-12">
                     <td>
                         <div class="form-group form-check">
                             <label class="form-check-label">
@@ -100,7 +94,6 @@
                             </label>
                         </div>
                     </td>
-                    <td></td>
                     <td>
                         <div class="form-group form-check">
                             <label class="form-check-label">
@@ -109,10 +102,39 @@
                             </label>
                         </div>
                     </td>
+                    <td>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                Peso de descarga (PD)
+                                <input class="form-check-input" asp-for="LoadScheduling.PD" /> @* @Html.DisplayNameFor(model => model.LoadScheduling.PD) *@
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="LoadScheduling.Cte" /> @Html.DisplayNameFor(model => model.LoadScheduling.Cte)
+                            </label>
+                        </div>
+                    </td>
+                <td>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="LoadScheduling.Pay" /> @Html.DisplayNameFor(model => model.LoadScheduling.Pay)
+                        </label>
+                    </div>
+                </td>
                 </tr>
             </table>
-            <table class="col-md-9">
+            <table class="col-md-12">
                 <tr>
+                    <td>
+                        <div class="form-group">
+                            <label asp-for="LoadScheduling.Weigth" class="control-label"></label>
+                            <input asp-for="LoadScheduling.Weigth" class="form-control" />
+                            <span asp-validation-for="LoadScheduling.Weigth" class="text-danger"></span>
+                        </div>
+                    </td>
                     <td>
                         <div class="form-group">
                             <label asp-for="LoadScheduling.VlTranspor" class="control-label"></label>
@@ -134,13 +156,6 @@
                             <span asp-validation-for="LoadScheduling.Vladvance" class="text-danger"></span>
                         </div>
                     </td>
-                    <td>
-                        <div class="form-group form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" asp-for="LoadScheduling.Pay" /> @Html.DisplayNameFor(model => model.LoadScheduling.Pay)
-                            </label>
-                        </div>
-                    </td>
                 </tr>
             </table>
             <table class="col-md-4">
@@ -152,13 +167,7 @@
                             <span asp-validation-for="LoadScheduling.ContractId" class="text-danger"></span>
                         </div>
                     </td>
-                    <td>
-                        <div class="form-group form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" asp-for="LoadScheduling.Cte" /> @Html.DisplayNameFor(model => model.LoadScheduling.Cte)
-                            </label>
-                        </div>
-                    </td>
+
                 </tr>
             </table>
             <hr />

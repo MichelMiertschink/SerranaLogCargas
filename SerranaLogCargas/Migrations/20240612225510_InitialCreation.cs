@@ -121,17 +121,17 @@ namespace LogCargas.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     IncludeDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    Unload = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     Bol = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     CustomerId = table.Column<int>(type: "int", nullable: false),
                     CityOriginId = table.Column<int>(type: "int", nullable: false),
                     CityDestinyId = table.Column<int>(type: "int", nullable: false),
                     UnloadDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     PD = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DriverId = table.Column<int>(type: "int", nullable: false),
                     VehicleType = table.Column<int>(type: "int", nullable: false),
                     RiskManagement = table.Column<int>(type: "int", nullable: true),
-                    Monitoring = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     CheckList = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Monitoring = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     Weigth = table.Column<float>(type: "float", nullable: false),
                     VlTranspor = table.Column<float>(type: "float", nullable: false),
                     VlContract = table.Column<float>(type: "float", nullable: false),
@@ -161,6 +161,12 @@ namespace LogCargas.Migrations
                         principalTable: "Customers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_LoadScheduling_Driver_DriverId",
+                        column: x => x.DriverId,
+                        principalTable: "Driver",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -183,6 +189,11 @@ namespace LogCargas.Migrations
                 name: "IX_LoadScheduling_CustomerId",
                 table: "LoadScheduling",
                 column: "CustomerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LoadScheduling_DriverId",
+                table: "LoadScheduling",
+                column: "DriverId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Vehicles_DriverID",

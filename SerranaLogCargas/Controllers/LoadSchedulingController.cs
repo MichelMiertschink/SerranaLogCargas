@@ -12,12 +12,14 @@ namespace LogCargas.Controllers
         private readonly LoadSchedulingService _loadSchedulingService;
         private readonly CustomerService _customerService;
         private readonly CityService _cityService;
+        private readonly DriverService _driverService;
 
-        public LoadSchedulingController(LoadSchedulingService loadScheduling, CustomerService customerService, CityService cityService)
+        public LoadSchedulingController(LoadSchedulingService loadScheduling, CustomerService customerService, CityService cityService , DriverService driverService)
         {
             _loadSchedulingService = loadScheduling;
             _customerService = customerService;
             _cityService = cityService;
+            _driverService = driverService;
         }
 
         public async Task<IActionResult> Index()
@@ -49,7 +51,8 @@ namespace LogCargas.Controllers
             {
                 var customers = await _customerService.FindAllAsync();
                 var cities = await _cityService.FindAllAsync();
-                var viewModel = new LoadSchedulingFormViewModel { Customer = customers, City = cities};
+                var drivers = await _driverService.FindAllAsync();
+                var viewModel = new LoadSchedulingFormViewModel { Customer = customers, City = cities, Driver = drivers};
                 return View(viewModel);
             }
             catch (Exception e)
@@ -67,7 +70,8 @@ namespace LogCargas.Controllers
             {
                 var customers = _customerService.FindAll();
                 var cities = await _cityService.FindAllAsync();
-                var viewModel = new LoadSchedulingFormViewModel { Customer = customers, City = cities };
+                var drivers = await _driverService.FindAllAsync();
+                var viewModel = new LoadSchedulingFormViewModel { Customer = customers, City = cities, Driver = drivers };
                 return View(viewModel);
             }
 
@@ -147,7 +151,8 @@ namespace LogCargas.Controllers
             }
             List<Customer> customers = await _customerService.FindAllAsync();
             List<City> cities = await _cityService.FindAllAsync();
-            var viewModel = new LoadSchedulingFormViewModel { LoadScheduling = loadSchedule, Customer = customers, City = cities };
+            List<Driver> drivers = await _driverService.FindAllAsync();
+            var viewModel = new LoadSchedulingFormViewModel { LoadScheduling = loadSchedule, Customer = customers, City = cities, Driver = drivers };
             return View(viewModel);
         }
 
@@ -160,7 +165,8 @@ namespace LogCargas.Controllers
 
                 var customers = await _customerService.FindAllAsync();
                 var cities = await _cityService.FindAllAsync();
-                var viewModel = new LoadSchedulingFormViewModel { Customer = customers, City = cities };
+                var drivers = await _driverService.FindAllAsync();
+                var viewModel = new LoadSchedulingFormViewModel { Customer = customers, City = cities, Driver = drivers };
                 return View(viewModel);
                 
             }

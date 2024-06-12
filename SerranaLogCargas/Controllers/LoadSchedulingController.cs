@@ -36,8 +36,8 @@ namespace LogCargas.Controllers
             {
                 maxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 10);
             }
-            ViewData["minDate"] = minDate.Value.ToString("dd-MM-yyyy");
-            ViewData["maxDate"] = maxDate.Value.ToString("dd-MM-yyyy");
+            ViewData["minDate"] = minDate.Value.ToString("dd/MM/yyyy");
+            ViewData["maxDate"] = maxDate.Value.ToString("dd/MM/yyyy");
             var result = await _loadSchedulingService.FindByDateAsync(minDate, maxDate);
             return View(result);
         }

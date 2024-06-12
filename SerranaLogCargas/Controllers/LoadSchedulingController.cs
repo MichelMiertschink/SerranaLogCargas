@@ -34,10 +34,10 @@ namespace LogCargas.Controllers
             }
             if (!maxDate.HasValue)
             {
-                maxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 10);
+                maxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
             }
-            ViewData["minDate"] = minDate.Value.ToString("dd/MM/yyyy");
-            ViewData["maxDate"] = maxDate.Value.ToString("dd/MM/yyyy");
+            ViewData["minDate"] = minDate.Value.Date.ToString("yyyy-MM-dd");
+            ViewData["maxDate"] = maxDate.Value.Date.ToString("yyyy-MM-dd");
             var result = await _loadSchedulingService.FindByDateAsync(minDate, maxDate);
             return View(result);
         }

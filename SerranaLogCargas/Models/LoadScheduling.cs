@@ -11,9 +11,6 @@ namespace LogCargas.Models
         [DataType(DataType.DateTime)]
         public DateTime IncludeDate { get; set; }
 
-        [Display(Name ="Entregue")]
-        public bool? Unload { get; set; }
-
         [Display(Name = "BOL")]
         public bool Bol {  get; set; }
 
@@ -39,18 +36,23 @@ namespace LogCargas.Models
         // Peso de descarga necessário
         public bool PD { get; set; }
 
-        [Display(Name ="T")]
-        public VehicleType VehicleType { get; set; }
+        [Display(Name = "Motorista")]
+        public Driver Driver { get; set; }
+        [Display(Name = "Motorista")]
+        public int DriverId { get; set; }
 
         [Display(Name ="G")]
+        public VehicleType VehicleType { get; set; }
+
+        [Display(Name ="C")]
         public RiskManagement? RiskManagement { get; set; }
+
+        // se é monitorado tem que ter Check list
+        [Display(Name = "CK")]
+        public bool CheckList { get; set; }
 
         [Display(Name ="M")]
         public bool Monitoring { get; set; }
-
-        // se é monitorado tem que ter Check list
-        [Display(Name = "C")]
-        public bool CheckList { get; set; }
 
         [Display(Name = "Peso")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
@@ -81,21 +83,21 @@ namespace LogCargas.Models
         {
         }
 
-        public LoadScheduling(int id, DateTime includeDate, bool? unload, bool bol, Customer customer, City cityOrigin, City cityDestiny, DateTime unloadDate, bool pD, VehicleType vehicleType, RiskManagement? riskManagement, bool monitoring, bool checkList, float weigth, float vlTranspor, float vlContract, float vladvance, bool pay, int contractId, bool cte)
+        public LoadScheduling(int id, DateTime includeDate, bool bol, Customer customer, City cityOrigin, City cityDestiny, DateTime unloadDate, bool pD, Driver driver, VehicleType vehicleType, RiskManagement? riskManagement, bool checkList, bool monitoring, float weigth, float vlTranspor, float vlContract, float vladvance, bool pay, int contractId, bool cte)
         {
             Id = id;
             IncludeDate = includeDate;
-            Unload = unload;
             Bol = bol;
             Customer = customer;
             CityOrigin = cityOrigin;
             CityDestiny = cityDestiny;
             UnloadDate = unloadDate;
             PD = pD;
+            Driver = driver;
             VehicleType = vehicleType;
             RiskManagement = riskManagement;
-            Monitoring = monitoring;
             CheckList = checkList;
+            Monitoring = monitoring;
             Weigth = weigth;
             VlTranspor = vlTranspor;
             VlContract = vlContract;

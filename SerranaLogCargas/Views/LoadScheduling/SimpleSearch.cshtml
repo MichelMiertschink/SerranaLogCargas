@@ -1,24 +1,23 @@
 ﻿@model IEnumerable<LogCargas.Models.LoadScheduling>
 
 @{
-    ViewData["Title"] = "Busca por Dt. Inclusão - Carregamentos";
+    ViewData["Title"] = "Carregamentos - Busca por Dt. Inclusão";
 }
 
 <h1>@ViewData["Title"]</h1>
 <p>
     <a asp-action="Create" class="btn btn-primary">Novo</a>
     <a asp-action="Index" class="btn btn-primary">Voltar</a>
-    <h4>@ViewData["minDate"] - @ViewData["maxDate"]</h4>
 </p>
 
-<nav class="navbar navbar-expand-sm  bg-primary" data-bs-theme="dark">
+<nav class="navbar navbar-expand-sm  bg-light" data-bs-theme="dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Filtro</a>
         <div class="collapse navbar-collapse" id="navbarColor01">
             <form asp-action="SimpleSearch">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <input type="date" class="form-control-sm" name="minDate" value=@ViewData["minDate"].ToString() />
+                        <input type="date" class="form-control-sm" name="minDate" value=@ViewData["minDate"] />
                     </li>
                     <li class="nav-item">
                         <input type="date" class="form-control-sm" name="maxDate" value=@ViewData["maxDate"] />

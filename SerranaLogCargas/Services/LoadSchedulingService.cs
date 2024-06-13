@@ -2,6 +2,7 @@
 using LogCargas.Data;
 using LogCargas.Models;
 using LogCargas.Services.Exceptions;
+using System.Text.RegularExpressions;
 
 namespace LogCargas.Services
 {
@@ -20,8 +21,10 @@ namespace LogCargas.Services
                 .Include(cityOrigin => cityOrigin.CityOrigin)
                 .Include(customerId => customerId.Customer)
                 .Include(driverId => driverId.Driver)
+                .OrderByDescending(x => x.IncludeDate)
                 .ToListAsync();
         }
+
         // Filtro pela data de inclusão
         public async Task<List<LoadScheduling>> FindByDateAsync(DateTime? minDate, DateTime? maxDate)
         {

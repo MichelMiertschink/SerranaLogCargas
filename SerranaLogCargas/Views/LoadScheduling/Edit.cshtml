@@ -12,14 +12,9 @@
     <div class="col-md-6">
         <form asp-action="Edit">
             <input type="hidden" asp-for="LoadScheduling.Id" />
+            <input type="hidden" asp-for="LoadScheduling.IncludeDate" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <td>
-                <div class="form-group">
-                    <label asp-for="LoadScheduling.IncludeDate" class="control-label"></label>
-                    <input asp-for="LoadScheduling.IncludeDate" class="form-control" disabled />
-                    <span asp-validation-for="LoadScheduling.UnloadDate" class="text-danger"></span>
-                </div>
-            </td>
+                
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="LoadScheduling.Bol" /> @Html.DisplayNameFor(model => model.LoadScheduling.Bol)

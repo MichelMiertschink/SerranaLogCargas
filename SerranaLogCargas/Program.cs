@@ -15,6 +15,7 @@ namespace LogCargas
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<LogCargasContext>(options =>
                 options.UseMySql(
+                    /*"server=mysql.mitecsuporte.com.br:3306; initial catalog=LogCargasSL; uid=mitecsupor_add2; pwd=Logcargas33",*/
                     "server=localhost; initial catalog=LOGCARGAS; uid=root; pwd=root",
                     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.25-mysql")));
 

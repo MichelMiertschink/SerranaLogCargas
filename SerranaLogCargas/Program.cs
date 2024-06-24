@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using LogCargas.Data;
 using LogCargas.Services;
+using Microsoft.Extensions.Options;
+using MySqlConnector;
 
 namespace LogCargas
 {
@@ -13,11 +15,9 @@ namespace LogCargas
 
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-            builder.Services.AddDbContext<LogCargasContext>(options =>
-                options.UseMySql(
-                    /*"server=mysql.mitecsuporte.com.br:3306; initial catalog=LogCargasSL; uid=mitecsupor_add2; pwd=Logcargas33",*/
-                    "server=localhost; initial catalog=LOGCARGAS; uid=root; pwd=root",
-                    Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.25-mysql")));
+
+            builder.Services.AddDbContextPool<LogCargasContext>(options =>
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
             // Registrando injeção de dependencia para os serviços
             builder.Services.AddScoped<SeedingService>();

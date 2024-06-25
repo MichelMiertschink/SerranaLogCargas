@@ -26,7 +26,7 @@ namespace LogCargas.Services
         }
 
         // Filtro pela data de inclusão
-        public async Task<List<LoadScheduling>> FindByDateAsync(DateTime? minDate, DateTime? maxDate)
+        public async Task<List<LoadScheduling>> FindByIncludeDateAsync(DateTime? minDate, DateTime? maxDate)
         {
             var result = from obj in _context.LoadScheduling select obj;
             if (minDate.HasValue)
@@ -47,7 +47,24 @@ namespace LogCargas.Services
                 .ToListAsync();
         }
 
-        // teste da ordenação.
+        // Filtro pela origem da viagem
+        public async Task<List<LoadScheduling>> FindByCityOriginAsync(City? cityOrigin)
+        {
+            var result = from obj in _context.LoadScheduling select obj;
+            if (cityOrigin != null)
+            {
+                result = result.Where(x => x.CityOrigin == cityOrigin);
+            }
+
+            return await result
+                .Include(cityDestiny => cityDestiny.CityDestiny)
+                .Include(cityOrigin => cityOrigin.CityOrigin)
+                .Include(customerId => customerId.Customer)
+                .Include(driverId => driverId.Driver)
+                .ToListAsync();
+        }
+
+        // Ordenado pro data de descarregamento
         public async Task<List<LoadScheduling>> FindAllOrderCustomerAsync()
         {
             return await _context.LoadScheduling
@@ -55,7 +72,7 @@ namespace LogCargas.Services
                 .Include(cityOrigin => cityOrigin.CityOrigin)
                 .Include(customerId => customerId.Customer)
                 .Include(driverId => driverId.Driver)
-                .OrderBy(x => x.Customer).ToListAsync();
+                .OrderBy(x => x.UnloadDate).ToListAsync();
         }
 
         public async Task InsertAsync(LoadScheduling loadScheduling)

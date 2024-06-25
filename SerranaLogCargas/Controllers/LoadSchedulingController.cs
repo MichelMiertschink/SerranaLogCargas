@@ -28,6 +28,7 @@ namespace LogCargas.Controllers
             return View(list);
         }
 
+        // Lista pela data de inclusão
         public async Task<IActionResult> SimpleSearch(DateTime? minDate, DateTime? maxDate)
         {
             if (!minDate.HasValue)
@@ -40,7 +41,15 @@ namespace LogCargas.Controllers
             }
             ViewData["minDate"] = minDate.Value.Date.ToString("yyyy-MM-dd");
             ViewData["maxDate"] = maxDate.Value.Date.ToString("yyyy-MM-dd");
-            var result = await _loadSchedulingService.FindByDateAsync(minDate, maxDate);
+            var result = await _loadSchedulingService.FindByIncludeDateAsync(minDate, maxDate);
+            return View(result);
+        }
+
+        //Busca por cidade de origem
+        public async Task<IActionResult> CityOriginSearch(City? cityOrigin)
+        {
+            
+            var result = await _loadSchedulingService.FindByCityOriginAsync(cityOrigin);
             return View(result);
         }
 

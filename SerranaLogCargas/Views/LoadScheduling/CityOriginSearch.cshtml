@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<LogCargas.Models.LoadScheduling>
 
 @{
-    ViewData["Title"] = "Carregamentos - Busca por Dt. Inclusão";
+    ViewData["Title"] = "Carregamentos - Busca por Cidade Origem";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -14,14 +14,16 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Filtro</a>
         <div class="collapse navbar-collapse" id="navbarColor01">
-            <form asp-action="SimpleSearch">
+            <form asp-action="CityOriginSearch">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <input type="date" class="form-control form-control-sm" name="minDate" value=@ViewData["minDate"] />
+                        <input type="text" class="form-control form-control-sm" name="cityOrigin" />
                     </li>
-                    <li class="nav-item">
-                        <input type="date" class="form-control form-control-sm" name="maxDate" value=@ViewData["maxDate"] />
-                    </li>
+@*                     <li>
+                        <select asp-for="LoadScheduling.CityOriginId" asp-items="@(new SelectList(Model.City, "Id", "Name"))" class="form-control">
+                            <option disabled selected>Selecionar...</option>
+                        </select>
+                    </li> *@
                     <li>
                         <button class="btn btn-secondary btn-sm" type="submit">Filtrar</button>
                     </li>

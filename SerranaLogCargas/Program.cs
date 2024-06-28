@@ -19,7 +19,7 @@ namespace LogCargas
             builder.Services.AddDbContextPool<LogCargasContext>(options =>
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-            // Registrando injeção de dependencia para os serviços
+            // Registrando injeï¿½ï¿½o de dependencia para os serviï¿½os
             builder.Services.AddScoped<SeedingService>();
             builder.Services.AddScoped<CityService>();
             builder.Services.AddScoped<StateService>();

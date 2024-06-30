@@ -22,16 +22,20 @@ namespace LogCargas.Models
         //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "##-#####-####")]
         public string CelPhone { get; set; }
 
+        // User ID form AspNetUser table
+        public string? OwnerID { get; set; }
+
         public Driver ()
         {
         }
 
-        public Driver(int id, string name, string cPF, string celPhone)
+        public Driver(int id, string name, string cpf, string celPhone, string? ownerID)
         {
             Id = id;
             Name = name;
-            CPF = cPF;
+            CPF = cpf;
             CelPhone = celPhone;
+            OwnerID = ownerID;
         }
     }
 }

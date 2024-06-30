@@ -3,6 +3,7 @@ using LogCargas.Data;
 using LogCargas.Models;
 using LogCargas.Services.Exceptions;
 using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Identity;
 
 namespace LogCargas.Services
 {
@@ -16,13 +17,13 @@ namespace LogCargas.Services
 
         public async Task<List<LoadScheduling>> FindAllAsync()
         {
-            return await _context.LoadScheduling
-                .Include(cityDestiny => cityDestiny.CityDestiny)
-                .Include(cityOrigin => cityOrigin.CityOrigin)
-                .Include(customerId => customerId.Customer)
-                .Include(driverId => driverId.Driver)
-                .OrderByDescending(x => x.IncludeDate)
-                .ToListAsync();
+                return await _context.LoadScheduling
+                    .Include(cityDestiny => cityDestiny.CityDestiny)
+                    .Include(cityOrigin => cityOrigin.CityOrigin)
+                    .Include(customerId => customerId.Customer)
+                    .Include(driverId => driverId.Driver)
+                    .OrderByDescending(x => x.IncludeDate)
+                    .ToListAsync();
         }
 
         // Filtro pela data de inclusão

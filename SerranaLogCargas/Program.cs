@@ -4,6 +4,8 @@ using LogCargas.Data;
 using LogCargas.Services;
 using Microsoft.Extensions.Options;
 using MySqlConnector;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace LogCargas
 {
@@ -19,7 +21,7 @@ namespace LogCargas
             builder.Services.AddDbContextPool<LogCargasContext>(options =>
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-            // Registrando inje��o de dependencia para os servi�os
+            // Registrando injecao de dependencia para os servi�os
             builder.Services.AddScoped<SeedingService>();
             builder.Services.AddScoped<CityService>();
             builder.Services.AddScoped<StateService>();
@@ -38,7 +40,26 @@ namespace LogCargas
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<LogCargasContext>();
+
+            builder.Services.AddRazorPages();
+
+            builder.Services.AddControllers(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                                 .RequireAuthenticatedUser()
+                                 .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            });
+
+            builder.Services.AddAuthorization(options =>
+            {
+                options.FallbackPolicy = new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()
+                .Build();
+            });
+
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
             var app = builder.Build();
